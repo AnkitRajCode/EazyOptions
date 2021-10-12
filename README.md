@@ -6,7 +6,7 @@ npm Start <br/>
 Port will start on 3000 
 
 
-Package Install
-firebase
-dotenv
-react-router-dom# EasyOptions
+Package Install:<br>
+firebase<br>
+dotenv<br>
+react-router-dom<br>
