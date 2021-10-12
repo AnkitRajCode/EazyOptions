@@ -1,0 +1,14 @@
+.navbar-brand img{
+    width: 2.8rem;
+    height: 2.8rem;
+}
+.nav-link{
+    font-weight: 500;
+    color: #6366F1!important;
+}
+.nav-item .active{
+    color: #60696e!important;
+}
+.nav-item .active:hover{
+    color: #111827!important;
+}

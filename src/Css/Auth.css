@@ -1,0 +1,65 @@
+/* Login */
+.login,.signup{
+    height: 100vh;
+    background-image: url(../Images/loginBackground.png);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+.loginCard,.signupCard{
+    width:450px;
+    height: 500px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 40px;
+    float: left;
+}
+.loginTitle,
+.loginText,
+.signupTitle,
+.signupText{
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+}
+.loginInput,
+.signupInput{
+    width: 100%;
+    margin-top: 30px;
+    background: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    color: #343d48;
+    padding: 3px 15px;
+    border: 2px solid #dadada !important;
+    border-radius: 10px;
+    background-color: rgb(243, 242, 250);
+    height: 46px;
+}
+.loginButton,
+.signupButton{
+    width: 100%;
+    margin-top: 30px;
+    padding: 10px 15px !important;
+    font-size: 15px;
+    border-color: #00d2ff;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    display: block;
+    background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5  51%, #00d2ff  100%);
+}
+.referalLink{
+    text-align: center !important;
+    width: 100%;
+    font-size: 18px;
+    margin-top: 10px;
+}
