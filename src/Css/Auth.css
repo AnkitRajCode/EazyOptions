@@ -1,12 +1,17 @@
 /* Login */
-.login,.signup{
+.login,
+.signup,
+.forgottenPassword{
     height: 100vh;
     background-image: url(../Images/loginBackground.png);
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
-.loginCard,.signupCard{
+.loginCard,
+.signupCard,
+.forgottenPasswordCard{
     width:450px;
     height: 500px;
     padding: 25px;
@@ -15,16 +20,22 @@
     margin-top: 40px;
     float: left;
 }
+.forgottenPasswordCard{
+    margin-top: 100px;
+}
 .loginTitle,
 .loginText,
 .signupTitle,
-.signupText{
+.signupText,
+.forgottenPasswordTitle,
+.forgottenPasswordText{
     text-align: center;
     font-size: 22px;
     font-weight: 600;
 }
 .loginInput,
-.signupInput{
+.signupInput,
+.forgottenPasswordInput{
     width: 100%;
     margin-top: 30px;
     background: #fff;
@@ -38,7 +49,8 @@
     height: 46px;
 }
 .loginButton,
-.signupButton{
+.signupButton,
+.forgottenPasswordButton{
     width: 100%;
     margin-top: 30px;
     padding: 10px 15px !important;
