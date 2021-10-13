@@ -27,7 +27,6 @@ const Signup = () => {
             history.push('/dashboard')
         } catch {
             alert("Failed to create an account")
-            return
         }
         setLoading(false)
     }

@@ -20,7 +20,6 @@ const Login = () => {
             history.push('/dashboard')
         } catch {
             alert("Failed to Log in")
-            return
         }
         setLoading(false)
     }

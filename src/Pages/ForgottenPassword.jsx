@@ -18,7 +18,6 @@ const ForgottenPassword = () => {
            alert("Check your inbox for further instructions")
         } catch {
             alert("Failed to Set Password")
-            return
         }
         setLoading(false)
     }
