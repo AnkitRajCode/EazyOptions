@@ -247,4 +247,7 @@
   .sidebar li .tooltip{
     display: none;
   }
+  .sidebar.open{
+    width: 100vw;
+  }
 }

@@ -10,8 +10,10 @@
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
-    width: 150px;
-    height: 150px;
+    width: 10rem;
+    height: 10rem;
+    margin-top: 2vh;
+    display: block;
 }
 .companyName,.companySlogan{
     color: #6366F1;
@@ -22,7 +24,7 @@
 }
 .companyName{
     color: #111827;
-    margin-top: 15px;
+    margin-top: 6vh;
 }
 .landingButton{
     background-color: #6366F1;
@@ -31,4 +33,25 @@
 }
 .landingButton:hover{
     color:aliceblue;
+}
+@media only screen and (max-width: 500px) {
+    .welcome{
+        height: 100vh;
+        background-image: url(../Images/login.svg);
+        background-size: cover;
+        background-position:65% 0%;
+    }
+    .welcome .brandImg{
+        display: none;
+    }
+    .companyName,.companySlogan{
+        font-size: 2.5rem;
+        margin-left: 0.5rem;
+    }
+    .companyName{
+        margin-top: 2vh;
+    }
+    .landingButton{
+        margin-left: 0.5rem;
+    }
 }

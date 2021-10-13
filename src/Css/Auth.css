@@ -8,6 +8,9 @@
     background-position: center top;
     background-repeat: no-repeat;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .loginCard,
 .signupCard,
@@ -17,8 +20,6 @@
     padding: 25px;
     background-color: white;
     border-radius: 15px;
-    margin-top: 40px;
-    float: left;
 }
 .forgottenPasswordCard{
     margin-top: 100px;
@@ -47,6 +48,7 @@
     border-radius: 10px;
     background-color: rgb(243, 242, 250);
     height: 46px;
+    outline: none;
 }
 .loginButton,
 .signupButton,
@@ -74,4 +76,23 @@
     width: 100%;
     font-size: 18px;
     margin-top: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+    .login,
+    .signup,
+    .forgottenPassword{
+        background-position: 75% 0%;
+    }
+    .loginCard,
+    .signupCard,
+    .forgottenPasswordCard{
+        width:100vw;
+        height: 540px;
+        padding: 30px;
+        border-radius: 0px;
+    }
+    .referalLink{
+        margin-top: 20px;
+    }
 }
