@@ -74,7 +74,7 @@ const Signup = () => {
                         </button>
                     </div>
                 </form>
-                <div className="referalLink"><Link to="/signup" className="text-decoration-none" >Already have an account? Login</Link></div>
+                <div className="referalLink"><Link to="/login" className="text-decoration-none" >Already have an account? Login</Link></div>
                 <div className="referalLink"><Link to="/" className="text-decoration-none" >Back to Home</Link></div>
             </div>
         </div>
