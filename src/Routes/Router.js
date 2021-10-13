@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 import PrivateRoute from '../Components/PrivateRoute/PrivateRoute'
+import Straddle from '../Components/Straddle';
 import Dashboard from '../Pages/Dashboard';
 import ForgottenPassword from '../Pages/ForgottenPassword';
 import Login from '../Pages/Login';
@@ -15,6 +16,7 @@ const Routes = () => {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path='/forgotten-password' component={ForgottenPassword} />
+                <Route exact path='/straddle' component={Straddle} />
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
             </Switch>
         </>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+
 // Css
 import '../Css/Sidebar.css'
 import profile from '../Images/avatar.png'
@@ -32,7 +34,7 @@ class Sidebar extends Component {
       return (
         <div className="sidebar">
             <div className="logo-details">
-            <img src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" className="icon" alt="brand" style={{width:"40px",height:"40px"}} />
+            <Link to="/"><img src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" className="icon" alt="brand" style={{width:"40px",height:"40px"}} /></Link>
                 <div className="logo_name ml-3">CodingLab</div>
                 <i className='bx bx-menu' id="btn" ></i>
             </div>
@@ -43,11 +45,11 @@ class Sidebar extends Component {
                 <span className="tooltip">Search</span>
             </li>
             <li>
-                <a href="/">
+                <a href="/straddle">
                 <i className='bx bx-grid-alt'></i>
-                <span className="links_name">Sidebar</span>
+                <span className="links_name">Straddle</span>
                 </a>
-                <span className="tooltip">Sidebar</span>
+                <span className="tooltip">Straddle</span>
             </li>
             <li>
             <a href="/">
@@ -56,48 +58,7 @@ class Sidebar extends Component {
             </a>
             <span className="tooltip">User</span>
             </li>
-            <li>
-            <a href="/">
-                <i className='bx bx-chat' ></i>
-                <span className="links_name">Messages</span>
-            </a>
-            <span className="tooltip">Messages</span>
-            </li>
-            <li>
-            <a href="/">
-                <i className='bx bx-pie-chart-alt-2' ></i>
-                <span className="links_name">Analytics</span>
-            </a>
-            <span className="tooltip">Analytics</span>
-            </li>
-            <li>
-            <a href="/">
-                <i className='bx bx-folder' ></i>
-                <span className="links_name">File Manager</span>
-            </a>
-            <span className="tooltip">Files</span>
-            </li>
-            <li>
-            <a href="/">
-                <i className='bx bx-cart-alt' ></i>
-                <span className="links_name">Order</span>
-            </a>
-            <span className="tooltip">Order</span>
-            </li>
-            <li>
-            <a href="/">
-                <i className='bx bx-heart' ></i>
-                <span className="links_name">Saved</span>
-            </a>
-            <span className="tooltip">Saved</span>
-            </li>
-            <li>
-            <a href="/">
-                <i className='bx bx-cog' ></i>
-                <span className="links_name">Setting</span>
-            </a>
-            <span className="tooltip">Setting</span>
-            </li>
+            
             <li className="profile">
                 <div className="profile-details">
                 <img src={profile} alt="profileImg" />

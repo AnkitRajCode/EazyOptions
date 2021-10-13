@@ -1,0 +1,10 @@
+.straddle .card{
+    margin-left: 25%;
+    margin-top: 100px;
+    float: left;
+}
+@media (max-width: 420px) {
+    .straddle .card{
+        margin-left: 0%;
+    }
+}
