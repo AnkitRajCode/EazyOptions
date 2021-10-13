@@ -45,18 +45,18 @@ class Sidebar extends Component {
                 <span className="tooltip">Search</span>
             </li>
             <li>
-                <a href="/straddle">
+              <Link to="/straddle">
                 <i className='bx bx-grid-alt'></i>
                 <span className="links_name">Straddle</span>
-                </a>
-                <span className="tooltip">Straddle</span>
+              </Link>
+              <span className="tooltip">Straddle</span>
             </li>
             <li>
-            <a href="/">
-                <i className='bx bx-user' ></i>
-                <span className="links_name">User</span>
-            </a>
-            <span className="tooltip">User</span>
+              <Link to="/dashboard">
+                  <i className='bx bx-user' ></i>
+                  <span className="links_name">Dashboard</span>
+              </Link>
+              <span className="tooltip">Dashboard</span>
             </li>
             
             <li className="profile">
