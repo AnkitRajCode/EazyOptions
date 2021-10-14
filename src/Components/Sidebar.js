@@ -5,74 +5,94 @@ import { Link } from "react-router-dom";
 import '../Css/Sidebar.css'
 import profile from '../Images/avatar.png'
 
+import { useAuth } from '../Contexts/AuthContext'
+import { useHistory } from "react-router";
+
+
+function HandleLogout(e) {
+  const { logout } = useAuth();
+  const history = useHistory();
+  e.preventDefault();
+  try {
+    logout();
+    history.push('/');
+  } catch {
+    alert("Couldn't logout");
+  }
+}
+
 class Sidebar extends Component {
-   componentDidMount(){
+
+
+  componentDidMount() {
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.getElementById("btn");
     let searchBtn = document.querySelector(".bx-search");
-    
-    closeBtn.addEventListener("click", ()=>{
+
+
+    closeBtn.addEventListener("click", () => {
       sidebar.classList.toggle("open");
       menuBtnChange();//calling the function(optional)
     });
-    
-    searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+
+    searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
       sidebar.classList.toggle("open");
       menuBtnChange(); //calling the function(optional)
     });
-    
+
     // following are the code to change sidebar button(optional)
     function menuBtnChange() {
-     if(sidebar.classList.contains("open")){
-       closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-     }else {
-       closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
-     }
-    }    
-   }
-   render() {
-      return (
-        <div className="sidebar">
-            <div className="logo-details">
-            <Link to="/"><img src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" className="icon" alt="brand" style={{width:"40px",height:"40px"}} /></Link>
-                <div className="logo_name ml-3">CodingLab</div>
-                <i className='bx bx-menu' id="btn" ></i>
-            </div>
-            <ul className="nav-list">
-            <li>
-                <i className='bx bx-search' ></i>
-                <input type="text" placeholder="Search..." />
-                <span className="tooltip">Search</span>
-            </li>
-            <li>
-              <Link to="/straddle">
-                <i className='bx bx-grid-alt'></i>
-                <span className="links_name">Straddle</span>
-              </Link>
-              <span className="tooltip">Straddle</span>
-            </li>
-            <li>
-              <Link to="/dashboard">
-                  <i className='bx bx-user' ></i>
-                  <span className="links_name">Dashboard</span>
-              </Link>
-              <span className="tooltip">Dashboard</span>
-            </li>
-            
-            <li className="profile">
-                <div className="profile-details">
-                <img src={profile} alt="profileImg" />
-                <div className="name_job">
-                    <div className="name">Ankit Raj</div>
-                    <div className="job">Web designer</div>
-                </div>
-                </div>
-                <i className='bx bx-log-out' id="log_out"></i>
-            </li>
-            </ul>
+      if (sidebar.classList.contains("open")) {
+        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+      } else {
+        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+      }
+    }
+  }
+
+  render() {
+    return (
+      <div className="sidebar">
+        <div className="logo-details">
+          <Link to="/"><img src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" className="icon" alt="brand" style={{ width: "40px", height: "40px" }} /></Link>
+          <div className="logo_name ml-3">Eazy Options</div>
+          <i className='bx bx-menu' id="btn" ></i>
         </div>
-      )
-   }
+        <ul className="nav-list">
+          <li>
+            <i className='bx bx-search' ></i>
+            <input type="text" placeholder="Search..." />
+            <span className="tooltip">Search</span>
+          </li>
+          <li>
+            <Link to="/straddle">
+              <i className='bx bx-grid-alt'></i>
+              <span className="links_name">Straddle</span>
+            </Link>
+            <span className="tooltip">Straddle</span>
+          </li>
+          <li>
+            <Link to="/dashboard">
+              <i className='bx bx-user' ></i>
+              <span className="links_name">Dashboard</span>
+            </Link>
+            <span className="tooltip">Dashboard</span>
+          </li>
+
+          <li className="profile">
+            <div className="profile-details">
+              <img src={profile} alt="profileImg" />
+              <div className="name_job">
+                <div className="name">Ankit Raj</div>
+                <div className="job">Web designer</div>
+              </div>
+            </div>
+            <i className='bx bx-log-out' id="log_out" onClick={(e) => { HandleLogout(e) }}></i>
+          </li>
+        </ul>
+      </div>
+    )
+  }
 }
 
 export default Sidebar;
