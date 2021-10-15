@@ -1,14 +1,38 @@
+import React, { Component } from "react";
+import Chart from "react-apexcharts";
 import Sidebar from "./Sidebar";
-
 import '../Css/Straddle.css';
-const Straddle = () => {
-    return ( 
+
+class Straddle extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      options: {
+        chart: {
+          id: "basic-bar"
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999,2000,2001,2002,2003,2004]
+        }
+      },
+      series: [
+        {
+          name: "series-1",
+          data: [30, 40, 45, 50, 49, 60, 70, 91,92,95,89,99,106]
+        }
+      ]
+    };
+}
+
+render() {
+    return (
         <div className="straddle">
             <Sidebar/>
             <section className="home-section">
-                <div className="card w-50">
+                <div className="card w-75 datataker row">
                     <h4>Straddle</h4>
-                    <form action="" className="form-group" pl-5>
+                    <form action="" className="form-group p-3 col-md-12" >
                         
                         <select>
                             <option value="nifty">Nifty</option>
@@ -51,9 +75,19 @@ const Straddle = () => {
                         <input type="submit" className="btn btn-sm btn-info" />
                     </form>
                 </div>
+                <div className="col-md-12">
+                    <Chart
+                        options={this.state.options}
+                        series={this.state.series}
+                        type="line"
+                        width="95%"
+                        height="350px"
+                    />
+                </div>
             </section>
         </div>
-     );
+        )
+    }
 }
  
 export default Straddle;
