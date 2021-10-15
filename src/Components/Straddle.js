@@ -4,7 +4,40 @@ import Sidebar from "./Sidebar";
 import '../Css/Straddle.css';
 
 class Straddle extends Component {
+  
   constructor(props) {
+    const data = {
+      'name': "NIFTY BANK",
+      'strike': 38000,
+      'date': '2021-10-11'
+    }
+    const Data = JSON.stringify(data);
+    const url = 'https://kpiro.com/charts';
+    const x_axis=[];
+    const y_axis=[];
+    const requestOptions = {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: Data
+    };
+    function fetchResults() {
+
+    fetch(url, requestOptions).then(
+      (response) => {
+        response.json().then(
+          (data) => {
+            let x = data["data"]
+            for (var e in x) {
+              x_axis.push(x[e][0])
+              y_axis.push(x[e][1])
+            }
+          }
+        )
+      }
+    )
+
+  }
+  fetchResults();
     super(props);
 
     this.state = {
@@ -13,13 +46,13 @@ class Straddle extends Component {
           id: "basic-bar"
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999,2000,2001,2002,2003,2004]
+          categories: x_axis
         }
       },
       series: [
         {
           name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91,92,95,89,99,106]
+          data: y_axis
         }
       ]
     };
