@@ -6,62 +6,78 @@ import { Link } from "react-router-dom";
 import '../Css/Auth.css'
 
 const Signup = () => {
-    const { signup } = useAuth()
+    const { signup, createUserDocument } = useAuth()
     const history = useHistory()
-    const [email,setEmail] = useState()
-    const [password,setPassword] = useState()
-    const [confirmPassword,setConfirmPassword] = useState()
-    const [loading,setLoading] = useState()
+    const [email, setEmail] = useState()
+    const [username, setUsername] = useState()
+    const [password, setPassword] = useState()
+    const [confirmPassword, setConfirmPassword] = useState()
+    const [loading, setLoading] = useState()
+    
 
-    function handleLogin(e) {
+    async function handlesigin(e) {
         e.preventDefault();
-        
-        if (password!==confirmPassword) {
-            console.log("NOT MATCH")
+
+        if (password !== confirmPassword) {
             alert("Confirm Password is not same as Password")
             return
         }
         try {
             setLoading(true)
-            signup(email,password)
+            await signup(email, password);
             history.push('/dashboard')
-        } catch {
-            alert("Failed to create an account")
+        } catch (error){
+            alert("Failed to create an account"+error)
         }
         setLoading(false)
+        await createUserDocument(username);
     }
-    return ( 
+    return (
         <div className="signup">
             <div className="signupCard">
                 <div className="signupTitle">Welcome to Eazy Options</div>
                 <div className="signupText mt-4">Sign Up</div>
-                <form onSubmit={(e)=>{handleLogin(e)}}>
+                <form onSubmit={(e) => { handlesigin(e) }}>
+                    <input
+                        name="username"
+                        type="username"
+                        placeholder="Enter your username"
+                        className="signupInput"
+                        onChange={(e) => {
+                            setUsername(e.target.value)
+                        }}
+                        required
+                    />
                     <input
                         name="email"
                         type="email"
                         placeholder="Enter your Email"
                         className="signupInput"
-                        onChange={(e)=>{
+                        onChange={(e) => {
                             setEmail(e.target.value)
                         }}
+                        required
                     />
+
                     <input
                         name="password"
                         type="password"
                         placeholder="Password"
                         className="signupInput"
-                        onChange={(e)=>{
+                        onChange={(e) => {
                             setPassword(e.target.value)
                         }}
+                        required
                     />
                     <input
                         name="confirm-password"
                         type="password"
                         placeholder="Confirm Password"
                         className="signupInput"
-                        onChange={(e)=>{
+                        onChange={(e) => {
                             setConfirmPassword(e.target.value)
                         }}
+                        required
                     />
                     <div className="flex items-center mt-3 justify-center">
                         <button
@@ -80,5 +96,5 @@ const Signup = () => {
         </div>
     );
 }
- 
+
 export default Signup;

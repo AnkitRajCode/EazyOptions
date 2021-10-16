@@ -207,8 +207,6 @@ export default function Straddle() {
             series={chartSeries}
             type="line"
             width="95%"
-            height="100%"
-            height="350px"
           />
         </div>
       </section>
