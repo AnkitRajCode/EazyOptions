@@ -11,7 +11,7 @@ export default function Straddle() {
   const [date, setDate] = useState();
   const [chartOptions, setChartOptions] = useState({});
   const [chartSeries, setChartSeries] = useState([]);
-  
+
 
   function fetchResults(e) {
     e.preventDefault();
@@ -35,16 +35,34 @@ export default function Straddle() {
           (data) => {
             let x = data["data"]
             for (var e in x) {
-              X.push(x[e][0])
+              X.push(x[e][0].substring(0, x[e][0].length - 3))
               Y.push(x[e][1])
             }
             var line = {
               chart: {
-                id: "basic-bar",
+                id: "straddle-strangle",
                 height: '100%'
+              },
+              stroke: {
+                show: true,
+                curve: 'smooth',
+                lineCap: 'butt',
+                colors: undefined,
+                width: 1,
+                dashArray: 0,
               },
               xaxis: {
                 categories: X,
+                title: {
+                  text: "Time",
+                  style: {
+                    color: undefined,
+                    fontSize: '20px',
+                    fontFamily: 'Helvetica, Arial, sans-serif',
+                    fontWeight: 600,
+                    cssClass: 'apexcharts-xaxis-title',
+                  },
+                },
                 tickPlacement: 'between',
                 tickAmount: 10,
                 labels: {
@@ -75,6 +93,21 @@ export default function Straddle() {
                     hour: 'HH:mm',
                   },
                 }
+              },
+              yaxis: {
+                title: {
+                  text: "Straddle/Strangle",
+                  rotate: -90,
+                  offsetX: 0,
+                  offsetY: 0,
+                  style: {
+                    color: undefined,
+                    fontSize: '20px',
+                    fontFamily: 'Helvetica, Arial, sans-serif',
+                    fontWeight: 600,
+                    cssClass: 'apexcharts-yaxis-title',
+                  },
+                },
               }
             }
 
