@@ -1,4 +1,4 @@
-<h1>Easy Options</h1>
+<h1>Eazy Options</h1>
 
 <b>Tech Stack:</b> ReactJs <br/>
 <b>DataBase:</b> FireBase <br/>
