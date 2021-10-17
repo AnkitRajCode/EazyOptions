@@ -32,7 +32,7 @@ export default function Sidebar() {
 
     e.preventDefault();
     try {
-      logout();
+      await logout();
       history.push('/');
     } catch {
       alert("Couldn't logout");
@@ -111,8 +111,7 @@ export default function Sidebar() {
             <div className="profile-details">
               <img src={profile} alt="profileImg" />
               <div className="name_job">
-                <div className="name">Ankit Raj</div>
-                <div className="job">Web designer</div>
+                <div className="name">{welcomeMessage}</div>
               </div>
             </div>
             <i className='bx bx-log-out' id="log_out" onClick={(e) => { HandleLogout(e) }}></i>
