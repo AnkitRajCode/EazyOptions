@@ -159,77 +159,82 @@ export default function Straddle() {
         <div className="straddleCard">
           <form action="" className="form-group form-inline" onSubmit={(e) => { handleSubmit(e); }} >
 
-              <div className=" text-center mb-4 col-md-12">
-                Straddle / Strangle
-              </div>
-              <select
-                value={instrument}
-                onChange={(e) => { setInstrument(e.target.value) }}
-                className="straddleSelect"
-              >
-                <option value="NIFTY">NIFTY</option>
-                <option value="BANKNIFTY">BANK NIFTY</option>
-              </select>
+            <div className=" text-center mb-4 col-md-12 h5">
+              Straddle / Strangle
+            </div>
+            <select
+              value={instrument}
+              onChange={(e) => { setInstrument(e.target.value) }}
+              className="straddleSelect"
+            >
+              <option value="NIFTY">NIFTY</option>
+              <option value="BANKNIFTY">BANK NIFTY</option>
+            </select>
 
-              <label for="">CE</label>
-              <select
-                value={strike1}
-                onChange={(e) => { setStrike1(e.target.value) }}
-                className="straddleSelect"
-              >
-                <option value={"33000"}>33,000</option>
-                <option value={"37000"}>37,000</option>
-                <option value={"37300"}>37,300</option>
-                <option value={"37500"}>37,500</option>
-                <option value={"37600"}>37,600</option>
-                <option value={"37800"}>37,800</option>
-                <option value={"38000"}>38,000</option>
-                <option value={"38100"}>38,100</option>
-                <option value={"38200"}>38,200</option>
-                <option value={"38300"}>38,300</option>
-                <option value={"38400"}>38,400</option>
-                <option value={"38500"}>38,500</option>
-              </select>
+            <label>CE:</label>
+            <select
+              value={strike1}
+              onChange={(e) => { setStrike1(e.target.value) }}
+              className="straddleSelect"
+            >
+              <option value={"33000"}>33,000</option>
+              <option value={"37000"}>37,000</option>
+              <option value={"37300"}>37,300</option>
+              <option value={"37500"}>37,500</option>
+              <option value={"37600"}>37,600</option>
+              <option value={"37800"}>37,800</option>
+              <option value={"38000"}>38,000</option>
+              <option value={"38100"}>38,100</option>
+              <option value={"38200"}>38,200</option>
+              <option value={"38300"}>38,300</option>
+              <option value={"38400"}>38,400</option>
+              <option value={"38500"}>38,500</option>
+            </select>
 
-              <label for="">PE</label>
-              <select
-                value={strike2}
-                onChange={(e) => { setStrike2(e.target.value) }}
-                className="straddleSelect"
-              >
-                <option value={"33000"}>33,000</option>
-                <option value={"37000"}>37,000</option>
-                <option value={"37300"}>37,300</option>
-                <option value={"37500"}>37,500</option>
-                <option value={"37600"}>37,600</option>
-                <option value={"37800"}>37,800</option>
-                <option value={"38000"}>38,000</option>
-                <option value={"38100"}>38,100</option>
-                <option value={"38200"}>38,200</option>
-                <option value={"38300"}>38,300</option>
-                <option value={"38400"}>38,400</option>
-                <option value={"38500"}>38,500</option>
-              </select>
-              
-              <label>Date</label>
-              <input
-                value={date}
-                type="date"
-                name="date"
-                id="date"
-                onChange={(e) => { setDate(e.target.value) }}
-                className="straddleSelect"
-              />
-              
-              <label>Call Prices
-              <input type="checkbox" checked={callPrice} onChange={(e) => { setCallPrice(e.target.checked) }} />
-              </label>
+            <label>PE:</label>
+            <select
+              value={strike2}
+              onChange={(e) => { setStrike2(e.target.value) }}
+              className="straddleSelect"
+            >
+              <option value={"33000"}>33,000</option>
+              <option value={"37000"}>37,000</option>
+              <option value={"37300"}>37,300</option>
+              <option value={"37500"}>37,500</option>
+              <option value={"37600"}>37,600</option>
+              <option value={"37800"}>37,800</option>
+              <option value={"38000"}>38,000</option>
+              <option value={"38100"}>38,100</option>
+              <option value={"38200"}>38,200</option>
+              <option value={"38300"}>38,300</option>
+              <option value={"38400"}>38,400</option>
+              <option value={"38500"}>38,500</option>
+            </select>
+            
+            <label>Date:</label>
+            <input
+              value={date}
+              type="date"
+              name="date"
+              id="date"
+              onChange={(e) => { setDate(e.target.value) }}
+              className="straddleSelect"
+            />
+            <input type="submit" value="Check" className="btn btn-sm btn-info ml-5" />
+            
 
-              <label>Put Prices
-              <input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>
-              </label>
+            <div className="col-md-12 form-inline mt-3">
+              <label><input type="checkbox" checked={callPrice} onChange={(e) => { setCallPrice(e.target.checked) }} />Call Prices</label>
+              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Put Prices</label>
+              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Extrinsic</label>
+              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Call Vwap</label>
+              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Put Vwap</label>
+              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Combined Vwap</label>
+              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Call IV</label>
+              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Put IV</label>
+              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Combined IV</label>
+            </div>
 
-              <input type="submit" value="Check" className="btn btn-sm btn-info ml-5" />
           </form>
         </div>
 
@@ -247,5 +252,4 @@ export default function Straddle() {
       </section>
     </div>
   )
-
 }
