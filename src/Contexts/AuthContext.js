@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react"
-import { auth } from "../firebase"
+import { auth, firestore } from "../firebase"
 
 const AuthContext = React.createContext()
 
@@ -35,6 +35,25 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
+  function createUserDocument(user,additionalData) {
+    const userRef = firestore.doc(`users/${user.uid}`);
+
+    const snapshot = userRef.get();
+
+    if (!snapshot.exists) {
+      const email = user.email;
+      const username = additionalData;
+      try {
+        userRef.set({
+          email,
+          username,
+        });
+      } catch (error) {
+        console.log('Error in creating user', error);
+      }
+    }
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)
@@ -51,7 +70,8 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    createUserDocument
   }
 
   return (

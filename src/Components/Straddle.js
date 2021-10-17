@@ -6,23 +6,29 @@ import '../Css/Straddle.css';
 
 export default function Straddle() {
   const [shouldDisplay, setShouldDisplay] = useState("none")
-  const [instrument, setInstrument] = useState("")
-  const [strike, setStrike] = useState();
-  const [date, setDate] = useState();
+  const [instrument, setInstrument] = useState("BANKNIFTY")
+  const [strike1, setStrike1] = useState('33000');
+  const [strike2, setStrike2] = useState('33000');
+  const [callPrice, setCallPrice] = useState(false);
+  const [putPrice, setPutPrice] = useState(false);
+  const [date, setDate] = useState("2021-04-01");
   const [chartOptions, setChartOptions] = useState({});
   const [chartSeries, setChartSeries] = useState([]);
 
   function fetchResults(e) {
     e.preventDefault();
     let X = [];
-    let Y = [];
+    let combined_Y = [],
+    callPrice_Y = [],
+    putPrice_Y = []
     const data = {
       'name': instrument,
-      'strike': strike,
+      'strike1': strike1,
+      'strike2': strike2,
       'date': date
     }
     const Data = JSON.stringify(data);
-    const url = 'https://kpiro.com/charts';
+    const url = 'https://api.eazyoptions.com:8080/charts';
     const requestOptions = {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
@@ -32,10 +38,17 @@ export default function Straddle() {
       (response) => {
         response.json().then(
           (data) => {
-            let x = data["data"]
-            for (var e in x) {
-              X.push(x[e][0].substring(0, x[e][0].length - 3))
-              Y.push(x[e][1])
+            console.log(data)
+            let combined_premium = data["data"]["combined_premium"], call_prices = data["data"]["call_prices"], put_prices = data["data"]["put_prices"]
+            for (let e in combined_premium) {
+              X.push(combined_premium[e][0].substring(0, combined_premium[e][0].length - 3))
+              combined_Y.push(combined_premium[e][1])
+            }
+            for (let e in call_prices) {
+              callPrice_Y.push(call_prices[e][1])
+            }
+            for (let e in put_prices) {
+              putPrice_Y.push(put_prices[e][1])
             }
             var line = {
               chart: {
@@ -95,7 +108,7 @@ export default function Straddle() {
               },
               yaxis: {
                 title: {
-                  text: "Straddle/Strangle",
+                  text: (strike1==strike2?"Straddle": "Strangle"),
                   rotate: -90,
                   offsetX: 0,
                   offsetY: 0,
@@ -109,12 +122,24 @@ export default function Straddle() {
                 },
               }
             }
-            var series = [
-              {
-                name: "Combined Premium",
-                data: Y
-              }
-            ]
+            var series = [{
+              name: "Combined Premium",
+              data: combined_Y
+            }];
+
+            if (callPrice) {
+              series.push({
+                name: "Call Price",
+                data: callPrice_Y,
+                color: "#8B0000"
+              })
+            }
+            if (putPrice) {
+              series.push({
+                name: "Put Price",
+                data: putPrice_Y
+              })
+            }
             setChartSeries(series);
             setChartOptions(line);
             setShouldDisplay("");
@@ -154,8 +179,9 @@ export default function Straddle() {
               </div>
               <div className="col-md-2">
                 <select
-                onChange={(e) => { setInstrument(e.target.value) }}
-                className="form-control straddleSelect"
+                  value={instrument}
+                  onChange={(e) => { setInstrument(e.target.value) }}
+                  className="form-control straddleSelect"
                 >
                   <option value="NIFTY">NIFTY</option>
                   <option value="BANKNIFTY">BANK NIFTY</option>
@@ -167,18 +193,22 @@ export default function Straddle() {
               </div>
               <div className="col-md-2">
                 <select
-                onChange={(e) => { setStrike(e.target.value) }}
-                className="form-control straddleSelect"
+                  value={strike1}
+                  onChange={(e) => { setStrike1(e.target.value) }}
+                  className="form-control straddleSelect"
                 >
-                  <option value={37500}>37,500</option>
-                  <option value={37600}>37,600</option>
-                  <option value={37800}>37,800</option>
-                  <option value={38000}>38,000</option>
-                  <option value={38100}>38,100</option>
-                  <option value={38200}>38,200</option>
-                  <option value={38300}>38,300</option>
-                  <option value={38400}>38,400</option>
-                  <option value={38500}>38,500</option>
+                  <option value={"33000"}>33,000</option>
+                  <option value={"37000"}>37,000</option>
+                  <option value={"37300"}>37,300</option>
+                  <option value={"37500"}>37,500</option>
+                  <option value={"37600"}>37,600</option>
+                  <option value={"37800"}>37,800</option>
+                  <option value={"38000"}>38,000</option>
+                  <option value={"38100"}>38,100</option>
+                  <option value={"38200"}>38,200</option>
+                  <option value={"38300"}>38,300</option>
+                  <option value={"38400"}>38,400</option>
+                  <option value={"38500"}>38,500</option>
                 </select>
               </div>
 
@@ -187,18 +217,22 @@ export default function Straddle() {
               </div>
               <div className="col-md-2">
                 <select
-                onChange={(e) => { setStrike(e.target.value) }}
-                className="form-control straddleSelect"
+                  value={strike2}
+                  onChange={(e) => { setStrike2(e.target.value) }}
+                  className="form-control straddleSelect"
                 >
-                  <option value={37500}>37,500</option>
-                  <option value={37600}>37,600</option>
-                  <option value={37800}>37,800</option>
-                  <option value={38000}>38,000</option>
-                  <option value={38100}>38,100</option>
-                  <option value={38200}>38,200</option>
-                  <option value={38300}>38,300</option>
-                  <option value={38400}>38,400</option>
-                  <option value={38500}>38,500</option>
+                  <option value={"33000"}>33,000</option>
+                  <option value={"37000"}>37,000</option>
+                  <option value={"37300"}>37,300</option>
+                  <option value={"37500"}>37,500</option>
+                  <option value={"37600"}>37,600</option>
+                  <option value={"37800"}>37,800</option>
+                  <option value={"38000"}>38,000</option>
+                  <option value={"38100"}>38,100</option>
+                  <option value={"38200"}>38,200</option>
+                  <option value={"38300"}>38,300</option>
+                  <option value={"38400"}>38,400</option>
+                  <option value={"38500"}>38,500</option>
                 </select>
               </div>
 
@@ -207,13 +241,21 @@ export default function Straddle() {
               </div>
               <div className="col-md-2">
                 <input
-                type="date"
-                name="date"
-                id="date"
-                onChange={(e) => { setDate(e.target.value) }} 
-                className="form-control straddleSelect"
+                  value={date}
+                  type="date"
+                  name="date"
+                  id="date"
+                  onChange={(e) => { setDate(e.target.value) }}
+                  className="form-control straddleSelect"
                 />
               </div>
+            <div className="row">
+              <div>Call Prices</div>
+              <input type="checkbox" checked={callPrice} onChange={(e) => { setCallPrice(e.target.checked) }} />
+              &nbsp;&nbsp;&nbsp;
+              <div>Put Prices</div>
+              <input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>
+            </div>
 
               <div className="col-md-1">
                 <input type="submit" className="btn btn-sm btn-info" />
@@ -221,7 +263,8 @@ export default function Straddle() {
             </div>
 
           </form>
-          
+
+
         </div>
         <br/><br/><br/><br/><br/><br/><br/><br/>
         <div className="col-md-12">

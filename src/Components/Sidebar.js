@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
+import { useEffect } from 'react';
 
 // Css
 import '../Css/Sidebar.css'
@@ -7,30 +8,43 @@ import profile from '../Images/avatar.png'
 
 import { useAuth } from '../Contexts/AuthContext'
 import { useHistory } from "react-router";
+import { firestore } from '../firebase';
+import { useState } from 'react/cjs/react.development';
 
 
-function HandleLogout(e) {
-  const { logout } = useAuth();
+
+
+export default function Sidebar() {
+  const { logout, currentUser } = useAuth();
   const history = useHistory();
-  e.preventDefault();
-  try {
-    logout();
-    history.push('/');
-  } catch {
-    alert("Couldn't logout");
+  const [welcomeMessage, setWelcomeMessage] = useState("");
+  function returnWelcomeMessage() {
+    firestore.collection('users').where('email', '==', currentUser.email).get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+        setWelcomeMessage("Hi!! " + doc.data().username)
+      })
+    })
   }
-}
 
-class Sidebar extends Component {
+  returnWelcomeMessage();
 
+  function HandleLogout(e) {
 
-  componentDidMount() {
+    e.preventDefault();
+    try {
+      logout();
+      history.push('/');
+    } catch {
+      alert("Couldn't logout");
+    }
+  }
+
+  useEffect(() => {
     let sidebar = document.querySelector(".sidebar");
     let thisoption = document.querySelector(".thisoption");
     let closeBtn = document.getElementById("btn");
     let optionBtn = document.getElementById("options");
     let searchBtn = document.querySelector(".bx-search");
-
 
     closeBtn.addEventListener("click", () => {
       sidebar.classList.toggle("open");
@@ -55,9 +69,7 @@ class Sidebar extends Component {
         closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
       }
     }
-  }
-
-  render() {
+  }, [])
     return (
       <div className="sidebar">
         <div className="logo-details">
@@ -114,8 +126,5 @@ class Sidebar extends Component {
           </li>
         </ul>
       </div>
-    )
-  }
+  )
 }
-
-export default Sidebar;
