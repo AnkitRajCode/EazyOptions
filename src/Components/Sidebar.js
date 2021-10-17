@@ -28,7 +28,7 @@ export default function Sidebar() {
 
   returnWelcomeMessage();
 
-  function HandleLogout(e) {
+  async function HandleLogout(e) {
 
     e.preventDefault();
     try {
