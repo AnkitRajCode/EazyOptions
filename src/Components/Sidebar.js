@@ -18,11 +18,9 @@ export default function Sidebar() {
   const { logout, currentUser } = useAuth();
   const history = useHistory();
   const [welcomeMessage, setWelcomeMessage] = useState("");
-  console.log(currentUser)
   function returnWelcomeMessage() {
     firestore.collection('users').where('email', '==', currentUser.email).get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
-        console.log(doc.data())
         setWelcomeMessage("Hi!! " + doc.data().username)
       })
     })
