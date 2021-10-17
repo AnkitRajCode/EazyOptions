@@ -9,7 +9,7 @@ import profile from '../Images/avatar.png'
 import { useAuth } from '../Contexts/AuthContext'
 import { useHistory } from "react-router";
 import { firestore } from '../firebase';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 
 
 
@@ -52,7 +52,7 @@ export default function Sidebar() {
     });
 
     optionBtn.addEventListener("click", () => {
-      thisoption.classList.toggle("hide");
+      thisoption.classList.toggle("unhide");
       menuBtnChange();//calling the function(optional)
     });
 
