@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
+import { useEffect } from 'react';
 
 // Css
 import '../Css/Sidebar.css'
@@ -7,28 +8,43 @@ import profile from '../Images/avatar.png'
 
 import { useAuth } from '../Contexts/AuthContext'
 import { useHistory } from "react-router";
+import { firestore } from '../firebase';
+import { useState } from 'react/cjs/react.development';
 
 
-function HandleLogout(e) {
-  const { logout } = useAuth();
+
+
+export default function Sidebar() {
+  const { logout, currentUser } = useAuth();
   const history = useHistory();
-  e.preventDefault();
-  try {
-    logout();
-    history.push('/');
-  } catch {
-    alert("Couldn't logout");
+  const [welcomeMessage, setWelcomeMessage] = useState("");
+  console.log(currentUser)
+  function returnWelcomeMessage() {
+    firestore.collection('users').where('email', '==', currentUser.email).get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+        console.log(doc.data())
+        setWelcomeMessage("Hi!! " + doc.data().username)
+      })
+    })
   }
-}
 
-class Sidebar extends Component {
+  returnWelcomeMessage();
 
+  function HandleLogout(e) {
 
-  componentDidMount() {
+    e.preventDefault();
+    try {
+      logout();
+      history.push('/');
+    } catch {
+      alert("Couldn't logout");
+    }
+  }
+
+  useEffect(() => {
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.getElementById("btn");
     let searchBtn = document.querySelector(".bx-search");
-
 
     closeBtn.addEventListener("click", () => {
       sidebar.classList.toggle("open");
@@ -48,51 +64,45 @@ class Sidebar extends Component {
         closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
       }
     }
-  }
-
-  render() {
-    return (
-      <div className="sidebar">
-        <div className="logo-details">
-          <Link to="/"><img src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" className="icon" alt="brand" style={{ width: "40px", height: "40px" }} /></Link>
-          <div className="logo_name ml-3">Eazy Options</div>
-          <i className='bx bx-menu' id="btn" ></i>
-        </div>
-        <ul className="nav-list">
-          <li>
-            <i className='bx bx-search' ></i>
-            <input type="text" placeholder="Search..." />
-            <span className="tooltip">Search</span>
-          </li>
-          <li>
-            <Link to="/straddle">
-              <i className='bx bx-grid-alt'></i>
-              <span className="links_name">Straddle</span>
-            </Link>
-            <span className="tooltip">Straddle</span>
-          </li>
-          <li>
-            <Link to="/dashboard">
-              <i className='bx bx-user' ></i>
-              <span className="links_name">Dashboard</span>
-            </Link>
-            <span className="tooltip">Dashboard</span>
-          </li>
-
-          <li className="profile">
-            <div className="profile-details">
-              <img src={profile} alt="profileImg" />
-              <div className="name_job">
-                <div className="name">Ankit Raj</div>
-                <div className="job">Web designer</div>
-              </div>
-            </div>
-            <i className='bx bx-log-out' id="log_out" onClick={(e) => { HandleLogout(e) }}></i>
-          </li>
-        </ul>
+  }, [])
+  return (
+    <div className="sidebar">
+      <div className="logo-details">
+        <Link to="/"><img src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" className="icon" alt="brand" style={{ width: "40px", height: "40px" }} /></Link>
+        <div className="logo_name ml-3">Eazy Options</div>
+        <i className='bx bx-menu' id="btn" ></i>
       </div>
-    )
-  }
-}
+      <ul className="nav-list">
+        <li>
+          <i className='bx bx-search' ></i>
+          <input type="text" placeholder="Search..." />
+          <span className="tooltip">Search</span>
+        </li>
+        <li>
+          <Link to="/straddle">
+            <i className='bx bx-grid-alt'></i>
+            <span className="links_name">Straddle</span>
+          </Link>
+          <span className="tooltip">Straddle</span>
+        </li>
+        <li>
+          <Link to="/dashboard">
+            <i className='bx bx-user' ></i>
+            <span className="links_name">Dashboard</span>
+          </Link>
+          <span className="tooltip">Dashboard</span>
+        </li>
 
-export default Sidebar;
+        <li className="profile">
+          <div className="profile-details">
+            <img src={profile} alt="profileImg" />
+            <div className="name_job">
+              <div className="name">{welcomeMessage}</div>
+            </div>
+          </div>
+          <i className='bx bx-log-out' id="log_out" onClick={(e) => { HandleLogout(e) }}></i>
+        </li>
+      </ul>
+    </div>
+  )
+}
