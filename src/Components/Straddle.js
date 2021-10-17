@@ -147,10 +147,12 @@ export default function Straddle() {
             </div>
           </div>
 
-          <form action="" className="form-group p-3 col-md-12" onSubmit={(e) => { handleSubmit(e); }} >
+          <form action="" className="form-group col-md-12 " onSubmit={(e) => { handleSubmit(e); }} >
             <div className="row">
-              <div className="col-md-4">
-                <div className="text-center mb-3 hide-lg">STRADDLE</div>
+              <div className=" text-center mb-4 col-md-12">
+                Straddle / Strangle
+              </div>
+              <div className="col-md-2">
                 <select
                 onChange={(e) => { setInstrument(e.target.value) }}
                 className="form-control straddleSelect"
@@ -160,8 +162,10 @@ export default function Straddle() {
                 </select>
               </div>
 
+              <div className="col-md-1">
+                <div className="mt-1 text-right">CE</div>
+              </div>
               <div className="col-md-2">
-                <div className="hide-lg mt-2 mb-1">CE</div>
                 <select
                 onChange={(e) => { setStrike(e.target.value) }}
                 className="form-control straddleSelect"
@@ -178,8 +182,10 @@ export default function Straddle() {
                 </select>
               </div>
 
+              <div className="col-md-1">
+                <div className="mt-1 text-right">SE</div>
+              </div>
               <div className="col-md-2">
-                <div className="hide-lg  mt-2 mb-1">SE</div>
                 <select
                 onChange={(e) => { setStrike(e.target.value) }}
                 className="form-control straddleSelect"
@@ -196,8 +202,10 @@ export default function Straddle() {
                 </select>
               </div>
 
-              <div className="col-md-4">
-                <div className="hide-lg  mt-2 mb-1">Date</div>
+              <div className="col-md-1">
+                <div className="mt-1 text-right">Date</div>
+              </div>
+              <div className="col-md-2">
                 <input
                 type="date"
                 name="date"
@@ -206,22 +214,23 @@ export default function Straddle() {
                 className="form-control straddleSelect"
                 />
               </div>
+
+              <div className="col-md-1">
+                <input type="submit" className="btn btn-sm btn-info" />
+              </div>
             </div>
 
-            <div className="row">
-              <input type="submit" className="btn btn-sm btn-info mx-auto mt-5 straddleButton" />
-            </div>
           </form>
           
         </div>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
         <div className="col-md-12">
           <Chart
             style={{ "display": shouldDisplay }}
             options={chartOptions}
             series={chartSeries}
             type="line"
-            width="98%"
+            width="95%"
             height="350px"
           />
         </div>

@@ -26,12 +26,19 @@ class Sidebar extends Component {
 
   componentDidMount() {
     let sidebar = document.querySelector(".sidebar");
+    let thisoption = document.querySelector(".thisoption");
     let closeBtn = document.getElementById("btn");
+    let optionBtn = document.getElementById("options");
     let searchBtn = document.querySelector(".bx-search");
 
 
     closeBtn.addEventListener("click", () => {
       sidebar.classList.toggle("open");
+      menuBtnChange();//calling the function(optional)
+    });
+
+    optionBtn.addEventListener("click", () => {
+      thisoption.classList.toggle("hide");
       menuBtnChange();//calling the function(optional)
     });
 
@@ -64,13 +71,29 @@ class Sidebar extends Component {
             <input type="text" placeholder="Search..." />
             <span className="tooltip">Search</span>
           </li>
-          <li>
-            <Link to="/straddle">
+          <li  id="options">
+            <Link to="#">
               <i className='bx bx-grid-alt'></i>
-              <span className="links_name">Straddle</span>
+              <span className="links_name">Options</span>
             </Link>
-            <span className="tooltip">Straddle</span>
+            <span className="tooltip">Options</span>
           </li>
+          <div className="thisoption">
+            <li>
+              <Link to="/straddle">
+                <i className='bx bx-line-chart'></i>
+                <span className="links_name">Straddle</span>
+              </Link>
+              <span className="tooltip">Straddle</span>
+            </li>
+            <li>
+              <Link to="/straddle">
+                <i className='bx bx-trending-up'></i>
+                <span className="links_name">Strangle</span>
+              </Link>
+              <span className="tooltip">Strangle</span>
+            </li>
+          </div>
           <li>
             <Link to="/dashboard">
               <i className='bx bx-user' ></i>

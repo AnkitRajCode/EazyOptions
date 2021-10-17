@@ -1,28 +1,27 @@
 .straddleCard{
     float: left;
     width: 90%;
-    margin: 50px 5% 80px 5%;
-    background-color: white;
-    padding: 30px 10px 0px 10px ;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    font-size: 20px;
+    margin-left: 5%;
+    /* background-color: white; */
+    padding: 40px 10px 0px 10px ;
+    /* border-radius: 5px; */
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    font-size: 18px;
     font-weight: 600;
 }
 .straddleSelect{
     width: 90% !important;
     margin-left: 5%;
+    font-size: small;
 }
-.straddleButton{
-    font-size: 18px;
-    font-weight: 600;
-    padding: 7px 15px;
+.blckof{
+    display: inline-block;
 }
 .hide-lg{
-    display: none;
+    display: block;
 }
 .hide-sm{
-    display: block;
+    display: none;
 }
 
 
