@@ -1,17 +1,40 @@
-.straddle .card{
-    margin-left: 10%;
-    margin-top: 50px;
+.straddleCard{
     float: left;
-    z-index: 100;
+    width: 90%;
+    margin: 50px 5% 80px 5%;
+    background-color: white;
+    padding: 30px 10px 0px 10px ;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-size: 20px;
+    font-weight: 600;
 }
-.card form{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content:space-between;
+.straddleSelect{
+    width: 90% !important;
+    margin-left: 5%;
 }
+.straddleButton{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 7px 15px;
+}
+.hide-lg{
+    display: none;
+}
+.hide-sm{
+    display: block;
+}
+
+
+/* media Query */
 @media (max-width: 420px) {
-    .straddle .card{
-        margin-left: 0%;
+    .straddleCard{
+        margin: 20px 5% 50px 5%;
+    }
+    .hide-lg{
+        display: block;
+    }
+    .hide-sm{
+        display: none;
     }
 }
