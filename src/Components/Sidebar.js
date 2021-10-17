@@ -92,18 +92,11 @@ export default function Sidebar() {
           </li>
           <div className="thisoption">
             <li>
-              <Link to="/straddle">
+              <Link to="/straddle" className="outyj">
                 <i className='bx bx-line-chart'></i>
-                <span className="links_name">Straddle</span>
+                <span className="links_name">Straddle/Strangle</span>
               </Link>
-              <span className="tooltip">Straddle</span>
-            </li>
-            <li>
-              <Link to="/straddle">
-                <i className='bx bx-trending-up'></i>
-                <span className="links_name">Strangle</span>
-              </Link>
-              <span className="tooltip">Strangle</span>
+              <span className="tooltip">Straddle/Strangle</span>
             </li>
           </div>
           <li>
