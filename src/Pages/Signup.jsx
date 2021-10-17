@@ -24,13 +24,14 @@ const Signup = () => {
         }
         try {
             setLoading(true)
-            await signup(email, password);
+            let user = await signup(email, password);
+            createUserDocument(user.user,username);
             history.push('/dashboard')
         } catch (error){
             alert("Failed to create an account"+error)
         }
         setLoading(false)
-        await createUserDocument(username);
+        
     }
     return (
         <div className="signup">

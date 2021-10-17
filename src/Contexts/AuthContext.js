@@ -35,18 +35,16 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
-  async function createUserDocument(additionalData) {
-    console.log("user now is ", currentUser)
-    const userRef = firestore.doc(`users/${currentUser.uid}`);
+  function createUserDocument(user,additionalData) {
+    const userRef = firestore.doc(`users/${user.uid}`);
 
-    const snapshot = await userRef.get();
-    console.log(snapshot)
+    const snapshot = userRef.get();
 
     if (!snapshot.exists) {
-      const email = currentUser.email;
+      const email = user.email;
       const username = additionalData;
       try {
-        await userRef.set({
+        userRef.set({
           email,
           username,
         });
@@ -58,7 +56,6 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      console.log("AUTH CHANGED", user)
       setCurrentUser(user)
       setLoading(false)
     })
