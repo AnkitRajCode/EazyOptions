@@ -11,6 +11,13 @@ export default function Straddle() {
   const [strike2, setStrike2] = useState('33000');
   const [callPrice, setCallPrice] = useState(false);
   const [putPrice, setPutPrice] = useState(false);
+  const [callVWAP, setCallVWAP] = useState(false);
+  const [putVWAP, setPutVWAP] = useState(false);
+  const [combinedVWAP, setCombinedVWAP] = useState(false);
+  const [callIV, setCallIV] = useState(false);
+  const [putIV, setPutIV] = useState(false);
+  const [combinedIV, setCombinedIV] = useState(false);
+  const [extrinsic, setExtrinsic] = useState(false);
   const [date, setDate] = useState("2021-04-01");
   const [chartOptions, setChartOptions] = useState({});
   const [chartSeries, setChartSeries] = useState([]);
@@ -19,16 +26,27 @@ export default function Straddle() {
     e.preventDefault();
     let X = [];
     let combined_Y = [],
-    callPrice_Y = [],
-    putPrice_Y = []
+      callPrice_Y = [],
+      putPrice_Y = [],
+      call_VWAP = [],
+      put_VWAP = [],
+      combined_VWAP = []
     const data = {
       'name': instrument,
-      'strike1': strike1,
-      'strike2': strike2,
+      'strike_ce': strike1,
+      'strike_pe': strike2,
       'date': date
     }
+    // "ce" : {
+    //   "date":"",
+    //   "time":"",
+    //   "open":[],
+    //   "high":[],
+
+    // }
     const Data = JSON.stringify(data);
-    const url = 'https://api.eazyoptions.com:8080/charts';
+    // const url = 'https://api.eazyoptions.com:8080/charts';
+    const url = 'https://kpiro.com/charts'
     const requestOptions = {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
@@ -39,16 +57,48 @@ export default function Straddle() {
         response.json().then(
           (data) => {
             console.log(data)
-            let combined_premium = data["data"]["combined_premium"], call_prices = data["data"]["call_prices"], put_prices = data["data"]["put_prices"]
-            for (let e in combined_premium) {
-              X.push(combined_premium[e][0].substring(0, combined_premium[e][0].length - 3))
-              combined_Y.push(combined_premium[e][1])
+            if (data['status'] == 'error') return;
+            data = data['data']
+            let ce_data = data['CE'], pe_data = data['PE'];
+            for (let i in ce_data) {
+              X.push(i)
+              callPrice_Y.push(ce_data[i]['Close'])
             }
-            for (let e in call_prices) {
-              callPrice_Y.push(call_prices[e][1])
+
+            for (let i in pe_data) {
+              putPrice_Y.push(pe_data[i]['Close'])
             }
-            for (let e in put_prices) {
-              putPrice_Y.push(put_prices[e][1])
+
+            for (let i = 0; i < callPrice_Y.length; i++) {
+              combined_Y.push(Math.round(callPrice_Y[i] + putPrice_Y[i]))
+            }
+
+            var vp = 0, vol = 0;
+            for (let i = 0; i < X.length; i++) {
+              let avg = (ce_data[X[i]]['High'] + ce_data[X[i]]['Low'] + ce_data[X[i]]['Close']) / 3, volume = ce_data[X[i]]['Volume'];
+              console.log(avg, volume)
+              vp += (avg * volume)
+              vol += volume
+              call_VWAP.push(Math.round(vp / vol))
+
+            }
+            vp = 0
+            vol = 0;
+            for (let i = 0; i < X.length; i++) {
+              let avg = (pe_data[X[i]]['High'] + pe_data[X[i]]['Low'] + pe_data[X[i]]['Close']) / 3, volume = pe_data[X[i]]['Volume'];
+              vp += (avg * volume)
+              vol += volume
+              put_VWAP.push(Math.round(vp / vol))
+
+            }
+            vp = 0
+            vol = 0;
+            for (let i = 0; i < X.length; i++) {
+              let avg = ((pe_data[X[i]]['High'] + pe_data[X[i]]['Low'] + pe_data[X[i]]['Close'] + ce_data[X[i]]['High'] + ce_data[X[i]]['Low'] + ce_data[X[i]]['Close']) / 3), volume = ce_data[X[i]]['Volume'] + pe_data[X[i]]['Volume'];
+              vp += (avg * volume)
+              vol += volume
+              combined_VWAP.push(Math.round(vp / vol))
+
             }
             var line = {
               chart: {
@@ -60,7 +110,7 @@ export default function Straddle() {
                 curve: 'smooth',
                 lineCap: 'butt',
                 colors: undefined,
-                width: 1,
+                width: 1.5,
                 dashArray: 0,
               },
               xaxis: {
@@ -108,7 +158,7 @@ export default function Straddle() {
               },
               yaxis: {
                 title: {
-                  text: (strike1==strike2?"Straddle": "Strangle"),
+                  text: (strike1 == strike2 ? "Straddle" : "Strangle"),
                   rotate: -90,
                   offsetX: 0,
                   offsetY: 0,
@@ -120,24 +170,42 @@ export default function Straddle() {
                     cssClass: 'apexcharts-yaxis-title',
                   },
                 },
+                tickAmount: 10
               }
             }
             var series = [{
               name: "Combined Premium",
-              data: combined_Y
+              data: combined_Y,
             }];
 
             if (callPrice) {
               series.push({
                 name: "Call Price",
                 data: callPrice_Y,
-                color: "#8B0000"
               })
             }
             if (putPrice) {
               series.push({
                 name: "Put Price",
-                data: putPrice_Y
+                data: putPrice_Y,
+              })
+            }
+            if (callVWAP) {
+              series.push({
+                name: "Call VWAP",
+                data: call_VWAP,
+              })
+            }
+            if (putVWAP) {
+              series.push({
+                name: "Put VWAP",
+                data: put_VWAP,
+              })
+            }
+            if (combinedVWAP) {
+              series.push({
+                name: "Combined VWAP",
+                data: combined_VWAP,
               })
             }
             setChartSeries(series);
@@ -168,10 +236,10 @@ export default function Straddle() {
               className="straddleSelect"
             >
               <option value="NIFTY">NIFTY</option>
-              <option value="BANKNIFTY">BANK NIFTY</option>
+              <option value="NIFTY BANK">NIFTY BANK</option>
             </select>
 
-            <label>CE:</label>
+            <label>CE:&nbsp;&nbsp;</label>
             <select
               value={strike1}
               onChange={(e) => { setStrike1(e.target.value) }}
@@ -189,9 +257,13 @@ export default function Straddle() {
               <option value={"38300"}>38,300</option>
               <option value={"38400"}>38,400</option>
               <option value={"38500"}>38,500</option>
+              <option value={"39000"}>39,000</option>
+              <option value={"39100"}>39,100</option>
+              <option value={"39200"}>39,200</option>
+              <option value={"39700"}>39,700</option>
             </select>
 
-            <label>PE:</label>
+            <label>PE:&nbsp;&nbsp;</label>
             <select
               value={strike2}
               onChange={(e) => { setStrike2(e.target.value) }}
@@ -209,9 +281,13 @@ export default function Straddle() {
               <option value={"38300"}>38,300</option>
               <option value={"38400"}>38,400</option>
               <option value={"38500"}>38,500</option>
+              <option value={"39000"}>39,000</option>
+              <option value={"39100"}>39,100</option>
+              <option value={"39200"}>39,200</option>
+              <option value={"39700"}>39,700</option>
             </select>
-            
-            <label>Date:</label>
+
+            <label>Date:&nbsp;&nbsp;</label>
             <input
               value={date}
               type="date"
@@ -221,24 +297,22 @@ export default function Straddle() {
               className="straddleSelect"
             />
             <input type="submit" value="Check" className="btn btn-sm btn-info ml-5" />
-            
+
 
             <div className="col-md-12 form-inline mt-3">
               <label><input type="checkbox" checked={callPrice} onChange={(e) => { setCallPrice(e.target.checked) }} />Call Prices</label>
-              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Put Prices</label>
-              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Extrinsic</label>
-              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Call Vwap</label>
-              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Put Vwap</label>
-              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Combined Vwap</label>
-              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Call IV</label>
-              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Put IV</label>
-              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }}/>Combined IV</label>
+              <label><input type="checkbox" checked={putPrice} onChange={(e) => { setPutPrice(e.target.checked) }} />Put Prices</label>
+              <label><input type="checkbox" checked={extrinsic} onChange={(e) => { setExtrinsic(e.target.checked) }} />Extrinsic</label>
+              <label><input type="checkbox" checked={callVWAP} onChange={(e) => { setCallVWAP(e.target.checked) }} />Call Vwap</label>
+              <label><input type="checkbox" checked={putVWAP} onChange={(e) => { setPutVWAP(e.target.checked) }} />Put Vwap</label>
+              <label><input type="checkbox" checked={combinedVWAP} onChange={(e) => { setCombinedVWAP(e.target.checked) }} />Combined Vwap</label>
+              <label><input type="checkbox" checked={callIV} onChange={(e) => { setCallIV(e.target.checked) }} />Call IV</label>
+              <label><input type="checkbox" checked={putIV} onChange={(e) => { setPutIV(e.target.checked) }} />Put IV</label>
+              <label><input type="checkbox" checked={combinedIV} onChange={(e) => { setCombinedIV(e.target.checked) }} />Combined IV</label>
             </div>
 
           </form>
         </div>
-
-        <br/><br/><br/><br/><br/><br/><br/><br/>
         <div className="col-md-12">
           <Chart
             style={{ "display": shouldDisplay }}
@@ -246,7 +320,7 @@ export default function Straddle() {
             series={chartSeries}
             type="line"
             width="95%"
-            height="350px"
+            height="600px"
           />
         </div>
       </section>
