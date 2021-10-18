@@ -3,14 +3,15 @@
 .signup,
 .forgottenPassword{
     height: 100vh;
-    background-image: url(../Images/loginBackground.png);
-    background-size: cover;
-    background-position: center top;
+    background-image: url(../Images/login.svg);
+    background-size: contain;
+    background-position: right top;
     background-repeat: no-repeat;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 }
 .loginCard,
 .signupCard,
@@ -18,7 +19,7 @@
     width:450px;
     height: 500px;
     padding: 25px;
-    background-color: white;
+    background-color: transparent;
     border-radius: 15px;
 }
 .forgottenPasswordCard{
@@ -82,11 +83,13 @@
     .login,
     .signup,
     .forgottenPassword{
+        background-image: url(../Images/loginBackground.png);
         background-position: 75% 0%;
     }
     .loginCard,
     .signupCard,
     .forgottenPasswordCard{
+        background-color: white;
         width:100vw;
         height: 540px;
         padding: 30px;
