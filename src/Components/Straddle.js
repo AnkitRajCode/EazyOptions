@@ -3,6 +3,7 @@ import { useState } from "react";
 import Chart from "react-apexcharts";
 import Sidebar from "./Sidebar";
 import '../Css/Straddle.css';
+import Header from "./Header";
 
 export default function Straddle() {
   const [shouldDisplay, setShouldDisplay] = useState("none")
@@ -224,6 +225,7 @@ export default function Straddle() {
     <div className="straddle">
       <Sidebar />
       <section className="home-section">
+        <Header/>
         <div className="straddleCard">
           <form action="" className="form-group form-inline" onSubmit={(e) => { handleSubmit(e); }} >
 

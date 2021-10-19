@@ -23,30 +23,32 @@ const ForgottenPassword = () => {
     }
     return ( 
         <div className="forgottenPassword">
-            <div className="forgottenPasswordCard">
-                <div className="forgottenPasswordTitle">Welcome to Eazy Options</div>
-                <div className="forgottenPasswordText mt-4">Password Reset</div>
-                <form onSubmit={(e)=>{handlePasswordReset(e)}}>
-                    <input
-                        name="email"
-                        type="email"
-                        placeholder="Enter your Email"
-                        className="forgottenPasswordInput"
-                        onChange={(e)=>{
-                            setEmail(e.target.value)
-                        }}
-                    />
-                    <button
-                        disabled={loading}
-                        type="submit"
-                        className="forgottenPasswordButton"
-                        value="Login"
-                    >
-                        Set Password
-                    </button>
-                </form>
-                <div className="referalLink"><Link to="/login" className="text-decoration-none" >Login</Link></div>
-                <div className="referalLink"><Link to="/signup" className="text-decoration-none" >Sign Up</Link></div>
+            <div className="glass">
+                <div className="forgottenPasswordCard">
+                    <div className="forgottenPasswordTitle">Welcome to Eazy Options</div>
+                    <div className="forgottenPasswordText mt-4">Password Reset</div>
+                    <form onSubmit={(e)=>{handlePasswordReset(e)}}>
+                        <input
+                            name="email"
+                            type="email"
+                            placeholder="Enter your Email"
+                            className="forgottenPasswordInput"
+                            onChange={(e)=>{
+                                setEmail(e.target.value)
+                            }}
+                        />
+                        <button
+                            disabled={loading}
+                            type="submit"
+                            className="forgottenPasswordButton"
+                            value="Login"
+                        >
+                            Set Password
+                        </button>
+                    </form>
+                    <div className="referalLink"><Link to="/login" className="text-decoration-none" >Login</Link></div>
+                    <div className="referalLink"><Link to="/signup" className="text-decoration-none" >Sign Up</Link></div>
+                </div>
             </div>
         </div>
     );

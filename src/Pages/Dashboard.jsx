@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../Components/Header';
 import Sidebar from '../Components/Sidebar';
 
 // Css
@@ -10,7 +11,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         <Sidebar />
         <section className="home-section">
-          dashboard
+          <Header/>
         </section>
       </div>
     )

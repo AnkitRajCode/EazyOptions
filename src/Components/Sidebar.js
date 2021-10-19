@@ -40,81 +40,90 @@ export default function Sidebar() {
   }
 
   useEffect(() => {
+    let arrow = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrow.length; i++) {
+      arrow[i].addEventListener("click", (e)=>{
+    let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+    arrowParent.classList.toggle("showMenu");
+      });
+    }
+
     let sidebar = document.querySelector(".sidebar");
-    let thisoption = document.querySelector(".thisoption");
-    let closeBtn = document.getElementById("btn");
-    let optionBtn = document.getElementById("options");
-    let searchBtn = document.querySelector(".bx-search");
-
-    closeBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-      menuBtnChange();//calling the function(optional)
+    let sidebarBtn = document.querySelector(".bx-menu");
+    console.log(sidebarBtn);
+    sidebarBtn.addEventListener("click", ()=>{
+      sidebar.classList.toggle("closed");
+      menuBtnChange();
     });
-
-    optionBtn.addEventListener("click", () => {
-      thisoption.classList.toggle("unhide");
-      menuBtnChange();//calling the function(optional)
-    });
-
-    searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
-      sidebar.classList.toggle("open");
-      menuBtnChange(); //calling the function(optional)
-    });
-
-    // following are the code to change sidebar button(optional)
     function menuBtnChange() {
-      if (sidebar.classList.contains("open")) {
-        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-      } else {
-        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+      if(sidebar.classList.contains("closed")){
+        sidebarBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+      }else {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
       }
     }
   }, [])
     return (
-      <div className="sidebar">
+      <div className="sidebar closed">
         <div className="logo-details">
           <Link to="/"><img src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" className="icon" alt="brand" style={{ width: "40px", height: "40px" }} /></Link>
-          <div className="logo_name ml-3">Eazy Options</div>
-          <i className='bx bx-menu' id="btn" ></i>
+          <div className="logo_name">Eazy Options</div>
+          <i className='bx bx-menu' id="btn"></i>
         </div>
-        <ul className="nav-list">
-          <li>
-            <i className='bx bx-search' ></i>
-            <input type="text" placeholder="Search..." />
-            <span className="tooltip">Search</span>
-          </li>
-          <li  id="options">
-            <Link to="#">
-              <i className='bx bx-grid-alt'></i>
-              <span className="links_name">Options</span>
-            </Link>
-            <span className="tooltip">Options</span>
-          </li>
-          <div className="thisoption">
-            <li>
-              <Link to="/straddle" className="outyj">
-                <i className='bx bx-line-chart'></i>
-                <span className="links_name">Straddle/Strangle</span>
-              </Link>
-              <span className="tooltip">Straddle/Strangle</span>
-            </li>
-          </div>
+        <ul class="nav-links">
           <li>
             <Link to="/dashboard">
-              <i className='bx bx-user' ></i>
-              <span className="links_name">Dashboard</span>
+              <i class='bx bx-grid-alt' ></i>
+              <span class="link_name">Dashboard</span>
             </Link>
-            <span className="tooltip">Dashboard</span>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#">Dashboard</a></li>
+            </ul>
           </li>
-
-          <li className="profile">
-            <div className="profile-details">
-              <img src={profile} alt="profileImg" />
-              <div className="name_job">
-                <div className="name">{welcomeMessage}</div>
-              </div>
+          <li>
+            <div class="iocn-link">
+              <Link href="#">
+                <i class='bx bx-line-chart' ></i>
+                <span class="link_name">Options</span>
+              </Link>
+              <i class='bx bxs-chevron-down arrow' ></i>
             </div>
-            <i className='bx bx-log-out' id="log_out" onClick={(e) => { HandleLogout(e) }}></i>
+            <ul class="sub-menu">
+              <li><Link class="link_name" href="#">Options</Link></li>
+              <li><Link to="/straddle">Straddle/Strangle</Link></li>
+            </ul>
+          </li>
+          <li>
+            <div class="iocn-link">
+              <a href="#">
+                <i class='bx bx-plug' ></i>
+                <span class="link_name">Posts</span>
+              </a>
+              <i class='bx bxs-chevron-down arrow' ></i>
+            </div>
+            <ul class="sub-menu">
+              <li><Link class="link_name" href="#">Futures</Link></li>
+              <li><Link href="#">Futures Analysis</Link></li>
+              <li><Link href="#">Futures Chart</Link></li>
+              <li><Link href="#">Top Futures</Link></li>
+              <li><Link href="#">Advance/Decline</Link></li>
+              <li><Link href="#">Watch List</Link></li>
+              <li><Link href="#">HV-IV</Link></li>
+            </ul>
+          </li>
+          
+          <li>
+            <div class="profile-details">
+              <div class="profile-content">
+                <img src={profile} alt="profileImg" />
+              </div>
+              <div class="name-job">
+                <div className="name_job">
+                  <div className="profile_name">{welcomeMessage}</div>
+                </div>
+              </div>
+              <i className='bx bx-log-out' id="log_out" onClick={(e) => { HandleLogout(e) }}></i>
+            </div>
           </li>
         </ul>
       </div>
