@@ -3,14 +3,23 @@
 .signup,
 .forgottenPassword{
     height: 100vh;
-    background-image: url(../Images/loginBackground.png);
+    background-image: url(../Images/parabolic-rectangle.svg);
     background-size: cover;
-    background-position: center top;
+    background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
+    
+}
+.glass{
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    background-clip: padding-box;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 }
 .loginCard,
 .signupCard,
@@ -18,8 +27,11 @@
     width:450px;
     height: 500px;
     padding: 25px;
-    background-color: white;
+    background-color: transparent;
     border-radius: 15px;
+}
+.signupCard{
+    margin-bottom: 50px;
 }
 .forgottenPasswordCard{
     margin-top: 100px;
@@ -30,6 +42,7 @@
 .signupText,
 .forgottenPasswordTitle,
 .forgottenPasswordText{
+    color: white;
     text-align: center;
     font-size: 22px;
     font-weight: 600;
@@ -66,7 +79,6 @@
     font-weight: 600;
     background-size: 200% auto;
     color: white;            
-    box-shadow: 0 0 20px #eee;
     border-radius: 5px;
     display: block;
     background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5  51%, #00d2ff  100%);
@@ -82,15 +94,22 @@
     .login,
     .signup,
     .forgottenPassword{
-        background-position: 75% 0%;
+        background-image: url(../Images/login.svg);
+        background-size: cover;
+        background-position:65% 0%;
     }
     .loginCard,
     .signupCard,
     .forgottenPasswordCard{
         width:100vw;
-        height: 540px;
+        height: 100%;
         padding: 30px;
         border-radius: 0px;
+    }
+    .loginButton,
+    .signupButton,
+    .forgottenPasswordButton{
+        box-shadow: 0 0 0px transparent;
     }
     .referalLink{
         margin-top: 20px;

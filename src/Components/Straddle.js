@@ -4,6 +4,7 @@ import Chart from "react-apexcharts";
 import Sidebar from "../Components/Sidebar";
 import '../Css/Straddle.css';
 import moment from "moment";
+import Header from "./Header";
 
 export default function Straddle() {
     const [instrument, setInstrument] = useState("NIFTY BANK")
