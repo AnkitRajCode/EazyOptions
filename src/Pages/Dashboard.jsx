@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Sidebar from '../Components/Sidebar';
 
 // Css
 import '../Css/Dashboard.css'
 
-class Dashboard extends Component {
-  render() {
-    return (
-      <div className="dashboard">
-        <Sidebar />
-        <section className="home-section">
-          dashboard
-        </section>
-      </div>
-    )
-  }
-}
+export default function Dashboard() {
 
-export default Dashboard;
+  return (
+    <div className="dashboard">
+      <Sidebar />
+      <section className="home-section">
+      </section>
+    </div>
+  )
+}

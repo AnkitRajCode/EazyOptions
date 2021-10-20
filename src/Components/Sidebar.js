@@ -44,7 +44,6 @@ export default function Sidebar() {
     let thisoption = document.querySelector(".thisoption");
     let closeBtn = document.getElementById("btn");
     let optionBtn = document.getElementById("options");
-    let searchBtn = document.querySelector(".bx-search");
 
     closeBtn.addEventListener("click", () => {
       sidebar.classList.toggle("open");
@@ -56,11 +55,6 @@ export default function Sidebar() {
       menuBtnChange();//calling the function(optional)
     });
 
-    searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
-      sidebar.classList.toggle("open");
-      menuBtnChange(); //calling the function(optional)
-    });
-
     // following are the code to change sidebar button(optional)
     function menuBtnChange() {
       if (sidebar.classList.contains("open")) {
@@ -70,14 +64,14 @@ export default function Sidebar() {
       }
     }
   }, [])
-    return (
-      <div className="sidebar">
-        <div className="logo-details">
-          <Link to="/"><img src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" className="icon" alt="brand" style={{ width: "40px", height: "40px" }} /></Link>
-          <div className="logo_name ml-3">Eazy Options</div>
-          <i className='bx bx-menu' id="btn" ></i>
-        </div>
-        <ul className="nav-list">
+  return (
+    <div className="sidebar">
+      <div className="logo-details">
+        <Link to="/"><img src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" className="icon" alt="brand" style={{ width: "40px", height: "40px" }} /></Link>
+        <div className="logo_name ml-3">Eazy Options</div>
+        <i className='bx bx-menu' id="btn" ></i>
+      </div>
+      <ul className="nav-list">
           <li>
             <i className='bx bx-search' ></i>
             <input type="text" placeholder="Search..." />
