@@ -10,7 +10,7 @@ const Welcome = () => {
             <Navbar/>
             <div className="brandImg ml-md-5"></div>
             <div className="companyName ml-md-5">Eazy Options</div>
-            <div className="companySlogan ml-md-5">Backtesting Made<br/> Eazy</div>
+            <div className="companySlogan ml-md-5">Trading Made<br/> Easy</div>
             <Link to="/dashboard" className="btn btn-lg landingButton ml-md-5 mt-4">Get Started</Link>
         </div>
     );
