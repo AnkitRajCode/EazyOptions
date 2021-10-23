@@ -50,7 +50,6 @@ export default function Sidebar() {
 
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".bx-menu");
-    console.log(sidebarBtn);
     sidebarBtn.addEventListener("click", ()=>{
       sidebar.classList.toggle("closed");
       menuBtnChange();
@@ -84,7 +83,7 @@ export default function Sidebar() {
             <div class="iocn-link">
               <Link href="#">
                 <i class='bx bx-line-chart' ></i>
-                <span class="link_name">Options</span>
+                <span className="link_name">Options</span>
               </Link>
               <i class='bx bxs-chevron-down arrow' ></i>
             </div>
@@ -103,12 +102,7 @@ export default function Sidebar() {
             </div>
             <ul class="sub-menu">
               <li><Link class="link_name" href="#">Futures</Link></li>
-              <li><Link href="#">Futures Analysis</Link></li>
-              <li><Link href="#">Futures Chart</Link></li>
-              <li><Link href="#">Top Futures</Link></li>
-              <li><Link href="#">Advance/Decline</Link></li>
-              <li><Link href="#">Watch List</Link></li>
-              <li><Link href="#">HV-IV</Link></li>
+              <li><Link to="/futures">Futures Chart</Link></li>
             </ul>
           </li>
           
