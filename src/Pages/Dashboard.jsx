@@ -18,4 +18,8 @@ class Dashboard extends Component {
   }
 }
 
+<<<<<<< HEAD
 export default Dashboard
+=======
+export default Dashboard;
+>>>>>>> a6bf567f77d0ce14a43f14220035c1d0a9187b53

@@ -81,7 +81,7 @@ export default function Sidebar() {
           </li>
           <li>
             <div class="iocn-link">
-              <Link href="#">
+              <Link>
                 <i class='bx bx-line-chart' ></i>
                 <span className="link_name">Options</span>
               </Link>
@@ -89,14 +89,22 @@ export default function Sidebar() {
             </div>
             <ul class="sub-menu">
               <li><Link class="link_name" href="#">Options</Link></li>
+              <li><Link to="/straddle">Option Chain</Link></li>
+              <li><Link to="/straddle">OI Change</Link></li>
+              <li><Link to="/straddle">Options Analysis</Link></li>
+              <li><Link to="/straddle">PE-CE Diffrence</Link></li>
+              <li><Link to="/straddle">Multi Strike Chart</Link></li>
+              <li><Link to="/straddle">IV-Price-OI Chart</Link></li>
               <li><Link to="/straddle">Straddle/Strangle</Link></li>
+              <li><Link to="/straddle">Strategy Builder</Link></li>
+              <li><Link to="/straddle">Strategy Analyzer</Link></li>
             </ul>
           </li>
           <li>
             <div class="iocn-link">
               <a href="#">
                 <i class='bx bx-plug' ></i>
-                <span class="link_name">Posts</span>
+                <span class="link_name">Futures</span>
               </a>
               <i class='bx bxs-chevron-down arrow' ></i>
             </div>
