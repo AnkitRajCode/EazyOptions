@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import Chart from "react-apexcharts";
 import Sidebar from "../Components/Sidebar";
@@ -25,9 +25,9 @@ export default function Straddle() {
     const [callStrikes, setCallStrikes] = useState([]);
     const [putStrikes, setPutStrikes] = useState([]);
     const [currentExpiry, setCurrentExpiry] = useState("");
-    const [currentData,setCurrentData] = useState({})
+    const [currentData, setCurrentData] = useState({})
 
-    function updateParameters(ce_data,pe_data) {
+    function updateParameters(ce_data, pe_data) {
         let X = [];
         let combined_Y = [],
             callPrice_Y = [],
@@ -70,7 +70,7 @@ export default function Straddle() {
         }
 
         for (let i in X) {
-            X[i] = X[i].substring(11,16)
+            X[i] = X[i].substring(11, 16)
         }
         var line = {
             chart: {
@@ -184,19 +184,19 @@ export default function Straddle() {
         setChartOptions(line);
     }
 
-    function updateStateAfterFetching(data,temp_expiry,call_strike,put_strike) {
+    function updateStateAfterFetching(data, temp_expiry, call_strike, put_strike) {
         setCurrentData(data);
         setCurrentExpiry(temp_expiry);
         setStrike1(call_strike)
         setStrike2(put_strike)
         let ce_data = data[temp_expiry][call_strike]['CE'], pe_data = data[temp_expiry][put_strike]['PE'];
-        updateParameters(ce_data,pe_data)
+        updateParameters(ce_data, pe_data)
     }
 
     function updateState(e) {
         e.preventDefault();
         let ce_data = currentData[currentExpiry][strike1]['CE'], pe_data = currentData[currentExpiry][strike2]['PE'];
-        updateParameters(ce_data,pe_data)
+        updateParameters(ce_data, pe_data)
     }
 
     function fetchAllDataFromServerForCurrentInstrument() {
@@ -215,11 +215,12 @@ export default function Straddle() {
             body: Data
         };
 
-        fetch(url,requestOptions).then(
+        fetch(url, requestOptions).then(
             (response) => {
                 response.json().then(
-                    (data) =>  {
+                    (data) => {
                         data = data['data']
+                        console.log(data);
                         let lst = [];
                         for (let exp in data) {
                             lst.push(exp)
@@ -234,22 +235,22 @@ export default function Straddle() {
                         }
                         let call_strike = lst[0], put_strike = lst[0];
                         setCallStrikes(lst);
-                        setPutStrikes(lst);  
+                        setPutStrikes(lst);
                         setStrike1(lst[0]);
                         setStrike2(lst[0]);
                         setCurrentData(data);
-                        updateStateAfterFetching(data,temp_expiry,call_strike,put_strike)
+                        updateStateAfterFetching(data, temp_expiry, call_strike, put_strike)
                     }
                 )
             }
 
         )
-        
+
     }
 
-    
 
-    useEffect(()=> {
+
+    useEffect(() => {
         fetchAllDataFromServerForCurrentInstrument();
     }, [instrument])
 
@@ -257,13 +258,28 @@ export default function Straddle() {
     //     updateState();
     // }, [currentExpiry,strike1,strike2,callPrice,putPrice,callVWAP,putVWAP,combinedVWAP])
 
+    const [testvar, setTestVar] = useState();
+
+    function newtest(e) {
+        e.preventDefault();
+        console.log("TESTING", testvar)
+        console.log("Hello");
+    }
+
+    const formRef = useRef(null);
+
     return (
         <div className="straddle">
             <Sidebar />
             <section className="home-section">
-              <Header/>
+                <Header />
                 <div className="straddleCard">
-                    <form action="" className="form-group form-inline" onSubmit={(e)=>{updateState(e)}}>
+                    {/* <form ref={formRef} className="form-group form-inline" onSubmit={(e)=>{newtest(e)}}>
+                        <input onChange={(e)=>{setTestVar(e.target.value);document.getElementById("submit").click()}}>
+                        </input>
+                        <input type="submit" value="submit" id="submit" className="submit btn btn-sm btn-info ml-5" />
+                    </form> */}
+                    <form action="" className="form-group form-inline" onSubmit={(e) => { console.log(e); updateState(e) }}>
                         <div className=" text-center mb-4 col-md-12 h5">
                             Straddle / Strangle
                         </div>
@@ -279,7 +295,7 @@ export default function Straddle() {
                         </select>
                         <select
                             value={currentExpiry}
-                            onChange={(e)=>{
+                            onChange={(e) => {
                                 setCurrentExpiry(e.target.value);
                             }}
                             className="straddleSelect"

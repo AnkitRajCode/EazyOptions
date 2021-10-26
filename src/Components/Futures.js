@@ -5,6 +5,8 @@ import Chart from "react-apexcharts";
 import Header from "./Header";
 import { useEffect } from "react";
 import { useState } from "react"
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 
 export default function Futures() {
     const [futuresList, setFuturesList] = useState([]);
@@ -13,7 +15,11 @@ export default function Futures() {
     const [chartOptions, setChartOptions] = useState({});
     const [chartSeries, setChartSeries] = useState([]);
 
+
     function updateParameters(data, symbol) {
+        console.log("START")
+        var today = new Date();
+        console.log(today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds())
         let X = [], prices = [], temp = [];
         for (let e in data[symbol]) {
             X.push(e);
@@ -30,90 +36,113 @@ export default function Futures() {
             temp.push(Math.round(vp / vol))
         }
 
-        var line = {
-            chart: {
-                id: "straddle-strangle",
-                height: '100%'
+        // var line = {
+        //     chart: {
+        //         id: "straddle-strangle",
+        //         height: '100%'
+        //     },
+        //     stroke: {
+        //         show: true,
+        //         curve: 'smooth',
+        //         lineCap: 'butt',
+        //         colors: undefined,
+        //         width: 1.5,
+        //         dashArray: 0,
+        //     },
+        //     xaxis: {
+        //         categories: X,
+        //         title: {
+        //             text: "Time",
+        //             style: {
+        //                 color: undefined,
+        //                 fontSize: '20px',
+        //                 fontFamily: 'Helvetica, Arial, sans-serif',
+        //                 fontWeight: 600,
+        //                 cssClass: 'apexcharts-xaxis-title',
+        //             },
+        //         },
+        //         tickPlacement: 'between',
+        //         tickAmount: 10,
+        //         labels: {
+        //             show: true,
+        //             rotate: -45,
+        //             rotateAlways: false,
+        //             hideOverlappingLabels: true,
+        //             showDuplicates: false,
+        //             trim: true,
+        //             minHeight: undefined,
+        //             maxHeight: 400,
+        //             style: {
+        //                 colors: [],
+        //                 fontSize: '12px',
+        //                 fontFamily: 'Helvetica, Arial, sans-serif',
+        //                 fontWeight: 400,
+        //                 cssClass: 'apexcharts-xaxis-label',
+        //             },
+        //             offsetX: 0,
+        //             offsetY: 0,
+        //             format: undefined,
+        //             formatter: undefined,
+        //             datetimeUTC: true,
+        //             datetimeFormatter: {
+        //                 year: 'yyyy',
+        //                 month: "MMM 'yy",
+        //                 day: 'dd MMM',
+        //                 hour: 'HH:mm',
+        //             },
+        //         }
+        //     },
+        //     yaxis: {
+        //         title: {
+        //             text: symbol,
+        //             rotate: -90,
+        //             offsetX: 0,
+        //             offsetY: 0,
+        //             style: {
+        //                 color: undefined,
+        //                 fontSize: '20px',
+        //                 fontFamily: 'Helvetica, Arial, sans-serif',
+        //                 fontWeight: 600,
+        //                 cssClass: 'apexcharts-yaxis-title',
+        //             },
+        //         },
+        //         tickAmount: 10
+        //     }
+        // }
+
+        var options = {
+            title: {
+                text: 'My chart'
             },
-            stroke: {
-                show: true,
-                curve: 'smooth',
-                lineCap: 'butt',
-                colors: undefined,
-                width: 1.5,
-                dashArray: 0,
+            xAxis: {
+                categories: X
             },
-            xaxis: {
-                categories: X,
-                title: {
-                    text: "Time",
-                    style: {
-                        color: undefined,
-                        fontSize: '20px',
-                        fontFamily: 'Helvetica, Arial, sans-serif',
-                        fontWeight: 600,
-                        cssClass: 'apexcharts-xaxis-title',
-                    },
-                },
-                tickPlacement: 'between',
-                tickAmount: 10,
-                labels: {
-                    show: true,
-                    rotate: -45,
-                    rotateAlways: false,
-                    hideOverlappingLabels: true,
-                    showDuplicates: false,
-                    trim: true,
-                    minHeight: undefined,
-                    maxHeight: 400,
-                    style: {
-                        colors: [],
-                        fontSize: '12px',
-                        fontFamily: 'Helvetica, Arial, sans-serif',
-                        fontWeight: 400,
-                        cssClass: 'apexcharts-xaxis-label',
-                    },
-                    offsetX: 0,
-                    offsetY: 0,
-                    format: undefined,
-                    formatter: undefined,
-                    datetimeUTC: true,
-                    datetimeFormatter: {
-                        year: 'yyyy',
-                        month: "MMM 'yy",
-                        day: 'dd MMM',
-                        hour: 'HH:mm',
-                    },
+            plotOptions: {
+                series: {
+                    marker: {
+                        enabled: true
+                    }
                 }
             },
-            yaxis: {
-                title: {
-                    text: symbol,
-                    rotate: -90,
-                    offsetX: 0,
-                    offsetY: 0,
-                    style: {
-                        color: undefined,
-                        fontSize: '20px',
-                        fontFamily: 'Helvetica, Arial, sans-serif',
-                        fontWeight: 600,
-                        cssClass: 'apexcharts-yaxis-title',
-                    },
-                },
-                tickAmount: 10
-            }
+            series: [{
+                name: symbol + " FUTURE",
+                data: prices,
+            },
+            {
+                name: "VWAP",
+                data: temp
+            }]
         }
 
-        var series = [{
-            name: symbol + " FUTURE",
-            data: prices,
-        },
-        {
-            name: "VWAP",
-            data: temp
-        }];
-        setChartSeries(series);
-        setChartOptions(line);
+        // var series = [{
+        //     name: symbol + " FUTURE",
+        //     data: prices,
+        // },
+        // {
+        //     name: "VWAP",
+        //     data: temp
+        // }];
+        setChartOptions(options);
     }
 
     function updateStateAfterFetching(data, symbol) {
@@ -126,7 +155,7 @@ export default function Futures() {
     }
 
     function fetchFutures() {
-        const url = 'https://api.eazyoptions.com:8080/futures';
+        const url = 'https://kpiro.com/futures';
         const requestOptions = {
             method: "GET",
             headers: { 'Content-Type': 'application/json' },
@@ -137,6 +166,7 @@ export default function Futures() {
                 response.json().then(
                     (data) => {
                         data = data['data']
+                        console.log(data);
                         let lst = [];
                         for (let e in data) {
                             lst.push(e)
@@ -161,9 +191,10 @@ export default function Futures() {
                 <Sidebar />
                 <Header />
                 <section className="home-section">
-                    
+
                     <div className="futuresCard">
                         <form action="" className="form-group form-inline">
+                            Futures Chart
                             <select
                                 value={currentFuture}
                                 onChange={(e) => {
@@ -182,16 +213,23 @@ export default function Futures() {
                                     })
                                 }
                             </select>
+                            {/* <input type="submit" value="Submit" className="btn btn-sm btn-info ml-5" /> */}
 
                         </form>
                     </div>
                     <div className="col-md-12">
-                        <Chart
+                        {/* <Chart
                             options={chartOptions}
                             series={chartSeries}
                             type="line"
                             width="95%"
                             height="600px"
+                        /> */}
+                        <HighchartsReact
+                            highcharts={Highcharts}
+                            options={chartOptions}
+                            height="600px"
+                        // height="1px"
                         />
                     </div>
                 </section>

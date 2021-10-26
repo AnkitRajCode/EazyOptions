@@ -9,6 +9,7 @@ import Signup from '../Pages/Signup';
 import Welcome from '../Pages/Welcome';
 import Straddle1 from '../Pages/Straddle';
 import Futures from '../Components/Futures';
+import OIChart from '../Pages/OI_Charts';
 
 const Routes = () => {
     return ( 
@@ -20,6 +21,7 @@ const Routes = () => {
                 <Route exact path='/forgotten-password' component={ForgottenPassword} />
                 <Route exact path='/test' component={Straddle1} />
                 <PrivateRoute exact path='/straddle' component={Straddle} />
+                <PrivateRoute exact path='/oi-chart' component={OIChart} />
                 <PrivateRoute exact path='/futures' component={Futures} />
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
             </Switch>
