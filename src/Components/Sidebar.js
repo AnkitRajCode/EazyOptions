@@ -49,11 +49,23 @@ export default function Sidebar() {
     }
 
     let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".bx-menu");
+    let sidebarBtn = document.querySelector("#btn");
+    let sidebarBtnt = document.querySelector("#btnt");
+    let sidebarBtntt = document.querySelector("#btntt");
+    let sidebarBtnttt = document.querySelector("#btnttt");
     console.log(sidebarBtn);
     sidebarBtn.addEventListener("click", ()=>{
       sidebar.classList.toggle("closed");
       menuBtnChange();
+    });
+    sidebarBtnt.addEventListener("click", ()=>{
+      sidebar.classList.toggle("closed");
+    });
+    sidebarBtntt.addEventListener("click", ()=>{
+      sidebar.classList.toggle("closed");
+    });
+    sidebarBtnttt.addEventListener("click", ()=>{
+      sidebar.classList.toggle("closed");
     });
     function menuBtnChange() {
       if(sidebar.classList.contains("closed")){
@@ -71,21 +83,23 @@ export default function Sidebar() {
           <i className='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav-links">
-          <li>
-            <Link to="/dashboard">
-              <i class='bx bx-grid-alt' ></i>
+
+          <li id="btntt">
+            <div className="a">
+              <i class='bx bx-grid-alt'></i>
               <span class="link_name">Dashboard</span>
-            </Link>
+            </div>
             <ul class="sub-menu blank">
               <li><a class="link_name" href="#">Dashboard</a></li>
             </ul>
           </li>
-          <li>
-            <div class="iocn-link">
-              <Link>
+
+          <li id="btnttt">
+            <div class="iocn-link"  >
+              <div className="a">
                 <i class='bx bx-line-chart' ></i>
                 <span class="link_name">Options</span>
-              </Link>
+              </div>
               <i class='bx bxs-chevron-down arrow' ></i>
             </div>
             <ul class="sub-menu">
@@ -102,11 +116,11 @@ export default function Sidebar() {
             </ul>
           </li>
           <li>
-            <div class="iocn-link">
-              <a href="#">
+            <div class="iocn-link" id="btnt">
+              <div className="a">
                 <i class='bx bx-plug' ></i>
                 <span class="link_name">Futures</span>
-              </a>
+              </div>
               <i class='bx bxs-chevron-down arrow' ></i>
             </div>
             <ul class="sub-menu">
