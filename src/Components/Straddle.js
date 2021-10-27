@@ -29,7 +29,6 @@ export default function Straddle() {
 
     function updateParameters(ce_data,pe_data) {
         let X = [];
-        console.log(ce_data)
         let combined_Y = [],
             callPrice_Y = [],
             putPrice_Y = [],
@@ -68,6 +67,10 @@ export default function Straddle() {
             vp += (avg * volume)
             vol += volume
             combined_VWAP.push(Math.round(vp / vol))
+        }
+
+        for (let i in X) {
+            X[i] = X[i].substring(11,16)
         }
         var line = {
             chart: {
@@ -192,8 +195,6 @@ export default function Straddle() {
 
     function updateState(e) {
         e.preventDefault();
-        console.log("CURRDATA",currentData)
-        console.log(currentExpiry,strike1,strike2)
         let ce_data = currentData[currentExpiry][strike1]['CE'], pe_data = currentData[currentExpiry][strike2]['PE'];
         updateParameters(ce_data,pe_data)
     }
@@ -216,11 +217,9 @@ export default function Straddle() {
 
         fetch(url,requestOptions).then(
             (response) => {
-                console.log(response)
                 response.json().then(
                     (data) =>  {
-                        data = JSON.parse(data['data'])
-                        console.log(typeof data)
+                        data = data['data']
                         let lst = [];
                         for (let exp in data) {
                             lst.push(exp)
@@ -262,6 +261,7 @@ export default function Straddle() {
         <div className="straddle">
             <Sidebar />
             <section className="home-section">
+              <Header/>
                 <div className="straddleCard">
                     <form action="" className="form-group form-inline" onSubmit={(e)=>{updateState(e)}}>
                         <div className=" text-center mb-4 col-md-12 h5">

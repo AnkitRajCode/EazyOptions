@@ -124,13 +124,8 @@ export default function Sidebar() {
               <i class='bx bxs-chevron-down arrow' ></i>
             </div>
             <ul class="sub-menu">
-              <li><div class="link_name text-light">Futures</div></li>
-              <li><Link href="#">Futures Analysis</Link></li>
-              <li><Link href="#">Futures Chart</Link></li>
-              <li><Link href="#">Top Futures</Link></li>
-              <li><Link href="#">Advance/Decline</Link></li>
-              <li><Link href="#">Watch List</Link></li>
-              <li><Link href="#">HV-IV</Link></li>
+              <li><Link class="link_name" href="#">Futures</Link></li>
+              <li><Link to="/futures">Futures Chart</Link></li>
             </ul>
           </li>
           
