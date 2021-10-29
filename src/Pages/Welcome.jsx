@@ -8,10 +8,34 @@ const Welcome = () => {
     return ( 
         <div className="welcome">
             <Navbar/>
-            <div className="brandImg ml-md-5"></div>
-            <div className="companyName ml-md-5">Eazy Options</div>
-            <div className="companySlogan ml-md-5">Trading Made<br/> Easy</div>
-            <Link to="/dashboard" className="btn btn-lg landingButton ml-md-5 mt-4">Get Started</Link>
+            <div className="welcomeHeader">
+                <Link to="/dashboard" className="">Get Started</Link>
+            </div>
+            <div className="welcomeSection">
+                <div className="sectionOne">
+                    <div className="partOne">
+                        <div className="partOneHeading">Options</div>
+                        <div className="partOneCard">Futures</div>
+                        <div className="partOneCard">Straddle</div>
+                        <div className="partOneCard">Strategy</div>
+                    </div>
+                    <div className="partOne">
+                        <div className="partOneHeading">Options</div>
+                        <div className="partCombine">Futures</div>
+                    </div>
+                    <div className="partOne">
+                        <div className="partOneHeading">Options</div>
+                        <div className="partOneCard">Futures</div>
+                        <div className="partOneCard">Straddle</div>
+                        <div className="partOneCard">Strategy</div>
+                    </div>
+                </div>
+                <div className="sectionTwo">
+                    <div className="sidepartone"></div>
+                    <div className="sideparttwo"></div>
+                    <div className="sideparttwo"></div>
+                </div>
+            </div>
         </div>
     );
 }

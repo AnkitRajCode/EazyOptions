@@ -1,57 +1,57 @@
-.welcome{
-    height: 100vh;
-    background-image: url(../Images/undraw_Data_extraction_re_0rd3.svg);
-    background-size: contain;
-    background-position: right;
-    background-repeat: no-repeat;
+.welcomeHeader{
+    width: 90%;
+    height: 40vh;
+    margin: 10px 5%;
+    border-radius: 20px;
+    background-color: aquamarine;
 }
-.welcome .brandImg{
-    background-image: url(../Images/business-document.png);
-    background-size: cover;
-    background-position: right;
-    background-repeat: no-repeat;
-    width: 10rem;
-    height: 10rem;
-    margin-top: 2vh;
-    display: block;
+.welcomeSection{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 20px 5%;
 }
-.companyName,.companySlogan{
-    color: #6366F1;
-    font-size: 3.75rem;
-    line-height: 1.1;
-    letter-spacing: -.025em;
-    font-weight: 800;
+.sectionOne{
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
-.companyName{
-    color: #111827;
-    margin-top: 6vh;
+.sectionTwo{
+    
+    width: 25%;
 }
-.landingButton{
-    background-color: #6366F1;
-    color: white;
-    cursor: pointer;
+.partOneHeading{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
 }
-.landingButton:hover{
-    color:aliceblue;
+.partOneCard{
+    padding: 20px 10px;
+    background-color: beige;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
 }
-@media only screen and (max-width: 500px) {
-    .welcome{
-        height: 100vh;
-        background-image: url(../Images/login.svg);
-        background-size: cover;
-        background-position:65% 0%;
-    }
-    .welcome .brandImg{
-        display: none;
-    }
-    .companyName,.companySlogan{
-        font-size: 2.5rem;
-        margin-left: 0.5rem;
-    }
-    .companyName{
-        margin-top: 2vh;
-    }
-    .landingButton{
-        margin-left: 0.5rem;
-    }
+.partCombine{
+    padding: 20px 10px;
+    background-color: beige;
+    width: 300px;
+    height: 75%;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+.sidepartone{
+    width: 100%;
+    height: 150px;
+    background-color: burlywood;
+    margin-top: -180px;
+    border-radius: 20px;
+}
+.sideparttwo{
+    width: 100%;
+    height: 150px;
+    background-color: burlywood;
+    margin-top: 15px;
+    border-radius: 20px;
 }

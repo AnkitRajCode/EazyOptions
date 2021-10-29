@@ -19,15 +19,6 @@
 .sidebar.closed{
   width: 78px;
 }
-
-
-
-/* .sidebar .logo-details{
-  height: 60px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-} */
 .sidebar .logo-details{
   height: 60px;
   display: flex;
@@ -45,6 +36,7 @@
 .sidebar .logo-details .icon{
   opacity: 0;
   transition: all 0.5s ease;
+  display: none;
 }
 .sidebar .logo-details .logo_name{
   color: #fff;
@@ -56,11 +48,12 @@
 .sidebar.open .logo-details .icon,
 .sidebar.open .logo-details .logo_name{
   opacity: 1;
+  
 }
-.sidebar .logo-details #btn{
+.sidebar.closed  .logo-details #btn{
   position: absolute;
   top: 50%;
-  right: 0;
+  left: 20%;
   transform: translateY(-50%);
   font-size: 22px;
   transition: all 0.4s ease;
@@ -69,8 +62,8 @@
   cursor: pointer;
   transition: all 0.5s ease;
 }
-.sidebar.open .logo-details #btn{
-  text-align: center;
+.sidebar .logo-details #btn{
+  right: 0;
 }
 .sidebar i{
   color: #fff;
