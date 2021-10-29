@@ -9,6 +9,7 @@ import Signup from '../Pages/Signup';
 import Welcome from '../Pages/Welcome';
 import Straddle1 from '../Pages/Straddle';
 import Futures from '../Components/Futures';
+import StrategyAnalyzer from '../Components/StrategyAnalyzer';
 
 const Routes = () => {
     return ( 
@@ -21,6 +22,7 @@ const Routes = () => {
                 <Route exact path='/test' component={Straddle1} />
                 <PrivateRoute exact path='/straddle' component={Straddle} />
                 <PrivateRoute exact path='/futures' component={Futures} />
+                <PrivateRoute exact path='/strategy-analyzer' component={StrategyAnalyzer} />
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
             </Switch>
         </>

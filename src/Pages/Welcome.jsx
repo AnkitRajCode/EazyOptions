@@ -17,13 +17,13 @@ const Welcome = () => {
                         <div className="partOneHeading text-dark">Options</div>
                         <div className="partOneCard">
                             <Link to="/straddle" className="text-decoration-none text-dark">
-                                Straddle
+                                Straddle/Strategy
                                 <i class='bx bx-grid-alt'></i>
                             </Link>
                         </div>
                         <div className="partOneCard">
-                            <Link to="/straddle" className="text-decoration-none text-dark">
-                                Strategy
+                            <Link to="/strategy-analyzer" className="text-decoration-none text-dark">
+                                Strategy Analyzer
                                 <i class='bx bx-line-chart' ></i>
                             </Link>
                         </div>

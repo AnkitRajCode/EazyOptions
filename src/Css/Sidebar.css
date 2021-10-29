@@ -254,7 +254,7 @@
 .sidebar.closed ~ .home-section{
   left: 78px;
   width: calc(100% - 78px);
-  height: 100;
+  height: 100%;
 }
 
 @media (max-width: 420px) {
