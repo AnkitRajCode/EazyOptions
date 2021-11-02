@@ -10,6 +10,41 @@ export class StrategyAnalyzer extends Component {
                 <Sidebar />
                 <section className="home-section pb-3">
                     <Header/>
+
+                    <form className="d-flex flex-row justify-content-between align-items-center px-5">
+                        <div className="">
+                            <div className="">
+                                <select className="straddleSelect">
+                                    <option>Bank Nifty</option>
+                                    <option>Nifty</option>
+                                </select>
+                                <select className="straddleSelect">
+                                    <option>Oct 28</option>
+                                    <option>Oct 31</option>
+                                </select>
+                            </div>
+                            <select  className="straddleSelect">
+                                <option>All</option>
+                                <option>All</option>
+                            </select>
+                        </div>
+                        <div className="">
+                            <label>Lower Limit</label>
+                            <select className="straddleSelect">
+                                <option value="">39500</option>
+                                <option value="">398500</option>
+                            </select>
+                        </div>
+                        <div className="">
+                            <label>Upper Limit</label>
+                            <select className="straddleSelect">
+                                <option value="">39500</option>
+                                <option value="">398500</option>
+                            </select>
+                        </div>
+                        <button className="btn btn-primary btn-sm">Analyze</button>
+                        <button className="btn btn-secondary btn-sm">Playoff Diagram (0)</button>
+                    </form>
                     <table className="table table-striped">
                         <tr>
                             <th>Strategy</th>

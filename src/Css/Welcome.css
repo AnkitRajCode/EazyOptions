@@ -1,95 +1,57 @@
-.welcomeHeader{
-    width: 90%;
-    height: 40vh;
-    margin: 10px 5%;
-    padding: 40px 50px;
-    border-radius: 20px;
-    background-image: url(../Images/cover.webp);
-    background-position: center;
+.welcome{
+    height: 100vh;
+    background-image: url(../Images/undraw_Data_extraction_re_0rd3.svg);
+    background-size: contain;
+    background-position: right;
     background-repeat: no-repeat;
+}
+.welcome .brandImg{
+    background-image: url(../Images/business-document.png);
     background-size: cover;
-    /* background-color: aquamarine; */
-    display: flex;
-    align-items: flex-end;
-}
-.welcomeSection{
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-    margin: 20px 5%;
-}
-.sectionOne{
-    width: 75%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.sectionTwo{
-    width: 25%;
-}
-.partOneHeading{
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 25px;
-    letter-spacing: 0.5px;
-}
-.partOneCard{
-    padding: 20px 30px;
-    background-color: aliceblue;
-    width: 300px;
-    border-radius: 10px;
-    margin-top: 15px;
-    font-size: 18px;
-    font-weight: 500;
-    outline: 1px solid rgb(218, 236, 252);
-}
-.partOneCard i{
-    font-size: 25px;
-    float: right;
-}
-.partCombine{
-    padding: 20px 10px;
-    background-color: aliceblue;
-    width: 300px;
-    height: 75%;
-    border-radius: 20px;
-    margin-top: 15px;
-    background-image: url(../Images/cover.webp);
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
-    background-size: cover;
+    width: 10rem;
+    height: 10rem;
+    margin-top: 2vh;
+    display: block;
 }
-.sidepartone{
-    width: 100%;
-    height: 120px;
-    /* background-color: burlywood; */
-    margin-top: -100px;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(30px);
-    background-clip: padding-box;
+.companyName,.companySlogan{
+    color: #6366F1;
+    font-size: 3.75rem;
+    line-height: 1.1;
+    letter-spacing: -.025em;
+    font-weight: 800;
 }
-.sideparttwo{
-    width: 100%;
-    height: 120px;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(30px);
-    background-clip: padding-box;
-    margin-top: 15px;
-    border-radius: 20px;
+.companyName{
+    color: #111827;
+    margin-top: 6vh;
 }
-.parttwocard{
-    padding: 20px 30px;
-    /* background-color: aliceblue; */
-    width: 300px;
-    height: 145px;
-    border-radius: 10px;
-    margin-top: 15px;
-    font-size: 18px;
-    font-weight: 500;
-    background-image: url(../Images/cover.webp);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    outline: 1px solid aliceblue;
+.landingButton{
+    background-color: #6366F1;
+    color: white;
+    cursor: pointer;
+}
+.landingButton:hover{
+    color:aliceblue;
+}
+@media only screen and (max-width: 500px) {
+    .welcome{
+        height: 100vh;
+        background-image: url(../Images/login.svg);
+        background-size: cover;
+        background-position:65% 0%;
+    }
+    .welcome .brandImg{
+        display: none;
+    }
+    .companyName,.companySlogan{
+        font-size: 2.5rem;
+        margin-left: 0.5rem;
+    }
+    .companyName{
+        margin-top: 2vh;
+    }
+    .landingButton{
+        margin-left: 0.5rem;
+    }
 }

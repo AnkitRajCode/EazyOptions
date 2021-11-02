@@ -112,7 +112,7 @@ export default function Sidebar() {
               <li><Link to="/straddle">IV-Price-OI Chart</Link></li>
               <li><Link to="/straddle">Straddle/Strangle</Link></li>
               <li><Link to="/straddle">Strategy Builder</Link></li>
-              <li><Link to="/straddle">Strategy Analyzer</Link></li>
+              <li><Link to="/strategy-analyzer">Strategy Analyzer</Link></li>
             </ul>
           </li>
           <li>
