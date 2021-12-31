@@ -1,4 +1,5 @@
 import '../Css/Navbar.css'
+import avatar from '../Images/avatar.png';
 import { Link } from "react-router-dom";
 import { useAuth } from '../Contexts/AuthContext';
 import { useHistory } from 'react-router';
@@ -22,9 +23,11 @@ const Navbar = () => {
     function checkUserSession() {
         if (currentUser && currentUser.email) {
             return (
-                <li className="nav-item ml-md-3">
-                    <Link className="nav-link" onClick={(e)=>{handleLogout(e)}}>Log out</Link>
-                </li>
+                <>
+                    <li className="nav-item ml-md-3">
+                        <Link className="nav-link" onClick={(e)=>{handleLogout(e)}}>Log out</Link>
+                    </li>
+                </>
             )
         } else {
             return (
@@ -35,6 +38,25 @@ const Navbar = () => {
                     <li className="nav-item ml-md-3">
                         <Link className="nav-link" to="/signup">Sign up</Link>
                     </li>
+                </>
+            )
+        }
+    }
+    function userDashboard() {
+        if (currentUser && currentUser.email) {
+            return (
+                <>
+                    <div className="ml-auto">
+                        <Link to="/dashboard">
+                            <img src={avatar} alt="avatar" style={{width:"40px",height:"40px"}} />
+                        </Link>
+                    </div>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    
                 </>
             )
         }
@@ -51,11 +73,12 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item ml-md-4">
-                        <Link className="nav-link active" to="/">Education</Link>
+                        <Link className="nav-link active" to="/">Home</Link>
                     </li>
                     {checkUserSession()}
                 </ul>
             </div>
+            {userDashboard()}
         </nav>
     );
 }

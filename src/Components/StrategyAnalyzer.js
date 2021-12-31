@@ -56,7 +56,7 @@ export class StrategyAnalyzer extends Component {
                             <th>BreakEven</th>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -65,7 +65,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -74,7 +74,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -83,7 +83,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -92,7 +92,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -101,7 +101,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -110,7 +110,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -119,7 +119,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -128,7 +128,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -137,7 +137,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -146,7 +146,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -155,7 +155,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -164,7 +164,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -173,7 +173,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -182,7 +182,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -191,7 +191,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -200,7 +200,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -209,7 +209,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -218,7 +218,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -227,7 +227,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -236,7 +236,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -245,7 +245,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -254,7 +254,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -263,7 +263,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -272,7 +272,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -281,7 +281,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -290,7 +290,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -299,7 +299,7 @@ export class StrategyAnalyzer extends Component {
                             <td>38892.65-39507.35</td>
                         </tr>
                         <tr>
-                            <td>Long Strategy</td>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
                             <td>39200CE-39200PE</td>
                             <td>Unlimited</td>
                             <td>-7683.75</td>
@@ -307,6 +307,114 @@ export class StrategyAnalyzer extends Component {
                             <td >-</td>
                             <td>38892.65-39507.35</td>
                         </tr>
+                        <tr>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
+                            <td>39200CE-39200PE</td>
+                            <td>Unlimited</td>
+                            <td>-7683.75</td>
+                            <td >-</td>
+                            <td >-</td>
+                            <td>38892.65-39507.35</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
+                            <td>39200CE-39200PE</td>
+                            <td>Unlimited</td>
+                            <td>-7683.75</td>
+                            <td >-</td>
+                            <td >-</td>
+                            <td>38892.65-39507.35</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
+                            <td>39200CE-39200PE</td>
+                            <td>Unlimited</td>
+                            <td>-7683.75</td>
+                            <td >-</td>
+                            <td >-</td>
+                            <td>38892.65-39507.35</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
+                            <td>39200CE-39200PE</td>
+                            <td>Unlimited</td>
+                            <td>-7683.75</td>
+                            <td >-</td>
+                            <td >-</td>
+                            <td>38892.65-39507.35</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
+                            <td>39200CE-39200PE</td>
+                            <td>Unlimited</td>
+                            <td>-7683.75</td>
+                            <td >-</td>
+                            <td >-</td>
+                            <td>38892.65-39507.35</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
+                            <td>39200CE-39200PE</td>
+                            <td>Unlimited</td>
+                            <td>-7683.75</td>
+                            <td >-</td>
+                            <td >-</td>
+                            <td>38892.65-39507.35</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
+                            <td>39200CE-39200PE</td>
+                            <td>Unlimited</td>
+                            <td>-7683.75</td>
+                            <td >-</td>
+                            <td >-</td>
+                            <td>38892.65-39507.35</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
+                            <td>39200CE-39200PE</td>
+                            <td>Unlimited</td>
+                            <td>-7683.75</td>
+                            <td >-</td>
+                            <td >-</td>
+                            <td>38892.65-39507.35</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="checkbox" value="long" /> Long Strategy</td>
+                            <td>39200CE-39200PE</td>
+                            <td>Unlimited</td>
+                            <td>-7683.75</td>
+                            <td >-</td>
+                            <td >-</td>
+                            <td>38892.65-39507.35</td>
+                        </tr>
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
                     </table>
                 </section>
             </div>

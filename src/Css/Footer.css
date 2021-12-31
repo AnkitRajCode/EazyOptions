@@ -1,0 +1,47 @@
+.footer{
+    width: 100%;
+    padding: 20px 50px;
+    background-color: aliceblue;
+}
+.footer-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.footer-subTitle{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.fa-home{
+    font-size: 22px;
+}
+.footer-text{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.footer-sectionTwo .footer-text{
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+}
+.footer-sectionThree{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.privacy{
+    display: flex;
+    flex-direction: row;
+}
